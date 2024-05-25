@@ -1,4 +1,5 @@
 /// Dart imports
+library;
 import 'dart:async';
 import 'dart:math' as math;
 
@@ -98,22 +99,20 @@ class _LiveLineChartState extends SampleViewState {
 
   ///Continuously updating the data source based on timer
   void _updateDataSource(Timer timer) {
-    if (isCardView != null) {
-      chartData!.add(_ChartData(count, _getRandomInt(10, 100)));
-      if (chartData!.length == 20) {
-        chartData!.removeAt(0);
-        _chartSeriesController?.updateDataSource(
-          addedDataIndexes: <int>[chartData!.length - 1],
-          removedDataIndexes: <int>[0],
-        );
-      } else {
-        _chartSeriesController?.updateDataSource(
-          addedDataIndexes: <int>[chartData!.length - 1],
-        );
-      }
-      count = count + 1;
+    chartData!.add(_ChartData(count, _getRandomInt(10, 100)));
+    if (chartData!.length == 20) {
+      chartData!.removeAt(0);
+      _chartSeriesController?.updateDataSource(
+        addedDataIndexes: <int>[chartData!.length - 1],
+        removedDataIndexes: <int>[0],
+      );
+    } else {
+      _chartSeriesController?.updateDataSource(
+        addedDataIndexes: <int>[chartData!.length - 1],
+      );
     }
-  }
+    count = count + 1;
+    }
 
   ///Get the random data
   int _getRandomInt(int min, int max) {

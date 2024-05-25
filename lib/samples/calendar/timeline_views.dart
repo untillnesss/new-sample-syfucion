@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:math';
 
 ///Package imports
@@ -92,8 +93,7 @@ class _TimelineViewsCalendarState extends SampleViewState {
     /// the visible dates in calendar.
     for (int i = 0; i < visibleDatesChangedDetails.visibleDates.length; i++) {
       final DateTime date = visibleDatesChangedDetails.visibleDates[i];
-      if (blockedDates != null &&
-          blockedDates.isNotEmpty &&
+      if (blockedDates.isNotEmpty &&
           blockedDates.contains(date)) {
         continue;
       }

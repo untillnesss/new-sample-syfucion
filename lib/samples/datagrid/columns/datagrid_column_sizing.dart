@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -13,7 +14,7 @@ import '../datagridsource/customer_datagridsource.dart';
 /// Renders column sizing data grid
 class ColumnSizingDataGrid extends SampleView {
   /// Creates column sizing data grid
-  const ColumnSizingDataGrid({Key? key}) : super(key: key);
+  const ColumnSizingDataGrid({super.key});
 
   @override
   _ColumnSizingDataGridState createState() => _ColumnSizingDataGridState();

@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'package:flutter/material.dart';
 
 ///calendar import
@@ -126,8 +127,7 @@ class HeatMapCalendarCalendarState extends SampleViewState {
   Widget _monthCellBuilder(
       BuildContext buildContext, MonthCellDetails details) {
     final Color backgroundColor = _getMonthCellBackgroundColor(details.date);
-    final Color defaultColor = model.themeData != null &&
-            model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultColor = model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.black54
         : Colors.white;
     return Container(

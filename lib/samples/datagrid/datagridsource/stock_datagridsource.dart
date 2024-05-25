@@ -1,4 +1,5 @@
 ///Dart import
+library;
 import 'dart:math' as math;
 
 /// Package imports

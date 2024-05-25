@@ -10,7 +10,7 @@ import '../datagridsource/orderinfo_datagridsource.dart';
 /// Renders column type data grid
 class ListDataSourceDataGrid extends SampleView {
   /// Creates column type data grid
-  const ListDataSourceDataGrid({Key? key}) : super(key: key);
+  const ListDataSourceDataGrid({super.key});
 
   @override
   _ListDataSourceDataGridState createState() => _ListDataSourceDataGridState();

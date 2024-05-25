@@ -1,4 +1,5 @@
 /// Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:collection/collection.dart';
@@ -14,7 +15,7 @@ import '../datagridsource/product_datagridsource.dart';
 /// Renders custom header data grid sample
 class CustomHeaderDataGrid extends SampleView {
   /// Creates custom header data grid sample
-  const CustomHeaderDataGrid({Key? key}) : super(key: key);
+  const CustomHeaderDataGrid({super.key});
 
   @override
   _CustomHeaderDataGridState createState() => _CustomHeaderDataGridState();

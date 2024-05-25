@@ -1,4 +1,5 @@
 ///Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 ///Local import
@@ -11,9 +12,7 @@ Future<T?> showRoundedModalBottomSheet<T>({
   Color color = Colors.white,
   bool dismissOnTap = false,
 }) {
-  assert(context != null);
-  assert(builder != null);
-  assert(color != null && color != Colors.transparent);
+  assert(color != Colors.transparent);
   return Navigator.push<T>(
     context,
     _RoundedCornerModalRoute<T>(
@@ -36,15 +35,14 @@ class CustomBottomSheet extends StatefulWidget {
   /// holds the informtion of customized bottom sheet
   const CustomBottomSheet(
       // ignore: tighten_type_of_initializing_formals
-      {Key? key,
+      {super.key,
       this.animationController,
       // ignore: tighten_type_of_initializing_formals
       this.onClosing,
       // ignore: tighten_type_of_initializing_formals
       this.builder})
       : assert(onClosing != null),
-        assert(builder != null),
-        super(key: key);
+        assert(builder != null);
 
   /// The animation that controls the bottom sheet's position.
   ///
@@ -168,8 +166,8 @@ class _RoundedCornerModalRoute<T> extends PopupRoute<T> {
     this.color,
     this.autoResize = false,
     this.dismissOnTap = true,
-    RouteSettings? settings,
-  }) : super(settings: settings);
+    super.settings,
+  });
 
   final WidgetBuilder? builder;
   final Color? color;
@@ -218,7 +216,7 @@ class _RoundedCornerModalRoute<T> extends PopupRoute<T> {
 }
 
 class _RoundedModalBottomSheet<T> extends StatefulWidget {
-  const _RoundedModalBottomSheet({Key? key, this.route}) : super(key: key);
+  const _RoundedModalBottomSheet({super.key, this.route});
 
   final _RoundedCornerModalRoute<T>? route;
 

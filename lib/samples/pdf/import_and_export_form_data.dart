@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -246,7 +247,7 @@ class _ImportAndExportFormDataState extends SampleViewState {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(_fileExtension.toUpperCase() + ' Data'),
+            title: Text('${_fileExtension.toUpperCase()} Data'),
             content: Scrollbar(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(

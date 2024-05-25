@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -108,7 +109,7 @@ class _DataLabelTemplateState extends SampleViewState {
                     ),
                   ),
                   Text(
-                    data.y.toString() + '%',
+                    '${data.y}%',
                     style: const TextStyle(
                       fontSize: 10,
                     ),

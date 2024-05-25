@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:ui';
@@ -19,7 +20,7 @@ import 'datagridsource/orderinfo_datagridsource.dart';
 /// Render data pager
 class LocalizationDataGrid extends LocalizationSampleView {
   /// Create data pager
-  const LocalizationDataGrid({Key? key}) : super(key: key);
+  const LocalizationDataGrid({super.key});
 
   @override
   _LocalizationDataGridState createState() => _LocalizationDataGridState();

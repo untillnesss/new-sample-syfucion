@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode import
@@ -13,7 +14,7 @@ import 'model/orderinfo.dart';
 /// Renders datagrid with selection option(single/multiple and select/unselect)
 class RTLModeDataGrid extends DirectionalitySampleView {
   /// Creates datagrid with selection option(single/multiple and select/unselect)
-  const RTLModeDataGrid({Key? key}) : super(key: key);
+  const RTLModeDataGrid({super.key});
 
   @override
   _SelectionDataGridPageState createState() => _SelectionDataGridPageState();

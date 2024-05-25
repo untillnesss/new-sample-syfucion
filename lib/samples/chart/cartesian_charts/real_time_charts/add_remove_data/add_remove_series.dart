@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:math';
 
 /// Package import
@@ -140,7 +141,7 @@ class _LiveVerticalState extends SampleViewState {
 
   ///Remove the series from chart
   void _removeSeries() {
-    if (series != null && series.isNotEmpty) {
+    if (series.isNotEmpty) {
       series.removeLast();
     }
   }

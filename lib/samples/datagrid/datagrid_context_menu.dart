@@ -1,4 +1,5 @@
 /// Packages import
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:collection/collection.dart';
@@ -15,7 +16,7 @@ import 'datagridsource/product_datagridsource.dart';
 /// Renders context menu data grid sample
 class ContextMenuDataGrid extends SampleView {
   /// Creates context menu  data grid sample
-  const ContextMenuDataGrid({Key? key}) : super(key: key);
+  const ContextMenuDataGrid({super.key});
 
   @override
   _ContextMenuDataGridState createState() => _ContextMenuDataGridState();

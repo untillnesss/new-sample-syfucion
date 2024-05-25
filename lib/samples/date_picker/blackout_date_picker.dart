@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:math';
 
 ///Package import
@@ -83,8 +84,7 @@ class _BlackoutDatePickerState extends SampleViewState {
       ),
     );
     return Scaffold(
-        backgroundColor: model.themeData == null ||
-                model.themeData.colorScheme.brightness == Brightness.light
+        backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
             ? null
             : const Color(0x00171a21),
         body: Column(children: <Widget>[

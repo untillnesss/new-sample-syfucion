@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -145,8 +146,7 @@ class _GettingStartedDatePickerState extends SampleViewState {
                   context)),
         ));
     return Scaffold(
-      backgroundColor: model.themeData == null ||
-              model.themeData.colorScheme.brightness == Brightness.light
+      backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
           ? null
           : const Color(0x00171a21),
       body: Column(children: <Widget>[
@@ -701,10 +701,8 @@ class _DateRangePickerOptionState extends State<_DateRangePickerOption> {
       _date = value;
     });
 
-    if (widget.selectionChanged != null) {
-      widget.selectionChanged(DateRangePickerSelectionChangedArgs(value));
+    widget.selectionChanged(DateRangePickerSelectionChangedArgs(value));
     }
-  }
 
   @override
   Widget build(BuildContext context) {

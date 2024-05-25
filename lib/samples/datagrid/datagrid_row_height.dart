@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'datagridsource/employee_datagridsource.dart';
 /// Renders data grid with row height
 class RowHeightDataGrid extends SampleView {
   /// Creates data grid with row height
-  const RowHeightDataGrid({Key? key}) : super(key: key);
+  const RowHeightDataGrid({super.key});
 
   @override
   _RowHeightDataGridState createState() => _RowHeightDataGridState();

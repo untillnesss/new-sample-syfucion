@@ -1,4 +1,5 @@
 /// dart imports
+library;
 import 'dart:io' show Platform;
 
 /// package imports
@@ -20,7 +21,7 @@ import 'widgets/search_bar.dart';
 /// Contains the Homepage wrapped with a MaterialApp widget.
 class SampleBrowser extends StatefulWidget {
   /// Creates sample browser widget.
-  const SampleBrowser();
+  const SampleBrowser({super.key});
 
   @override
   _SampleBrowserState createState() => _SampleBrowserState();
@@ -229,7 +230,7 @@ class _SampleBrowserState extends State<SampleBrowser> {
 /// Home page of the sample browser for both mobile and web.
 class HomePage extends StatefulWidget {
   /// Creates the home page layout.
-  const HomePage({
+  const HomePage({super.key, 
     required this.refresh,
   });
 
@@ -711,7 +712,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     TextSpan(
-                      text: ' - ' + model.sampleList[i].title!,
+                      text: ' - ${model.sampleList[i].title!}',
                       style: TextStyle(
                         fontFamily: 'HeeboMedium',
                         fontWeight: FontWeight.normal,

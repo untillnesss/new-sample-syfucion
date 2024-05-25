@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/material.dart';
 
 ///Date picker imports
@@ -50,8 +51,7 @@ class _PickerLocalizationState extends LocalizationSampleViewState {
               child: _getGettingStartedDatePicker(_controller, context)),
         ));
     return Scaffold(
-      backgroundColor: model.themeData == null ||
-              model.themeData.colorScheme.brightness == Brightness.light
+      backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
           ? null
           : const Color(0x00171a21),
       body: Column(children: <Widget>[

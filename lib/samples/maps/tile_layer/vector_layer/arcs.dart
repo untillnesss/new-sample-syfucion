@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
@@ -605,9 +606,9 @@ class _BlowingCircleCustomPaint extends CustomPainter {
 class BlowingCircle extends StatefulWidget {
   /// Creates the blowing  circle sample
   const BlowingCircle({
-    Key? key,
+    super.key,
     required this.color,
-  }) : super(key: key);
+  });
 
   /// Color value
   final Color color;

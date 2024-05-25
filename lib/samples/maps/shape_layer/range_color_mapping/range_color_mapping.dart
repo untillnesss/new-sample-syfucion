@@ -1,4 +1,5 @@
 ///Flutter package imports
+library;
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart' show NumberFormat;
@@ -427,11 +428,8 @@ class _MapRangeColorMappingPageState extends SampleViewState {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                          _worldPopulationDensity[index].countryName +
-                              ' : ' +
-                              _numberFormat.format(
-                                  _worldPopulationDensity[index].density) +
-                              ' per sq. km.',
+                          '${_worldPopulationDensity[index].countryName} : ${_numberFormat.format(
+                                  _worldPopulationDensity[index].density)} per sq. km.',
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!

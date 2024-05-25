@@ -1,4 +1,5 @@
 /// Dart imports
+library;
 import 'dart:math';
 import 'dart:ui';
 
@@ -249,9 +250,6 @@ Path? _dashPath(
   Path source, {
   required _CircularIntervalList<double> dashArray,
 }) {
-  if (source == null) {
-    return null;
-  }
   const double intialValue = 0.0;
   final Path path = Path();
   for (final PathMetric measurePath in source.computeMetrics()) {

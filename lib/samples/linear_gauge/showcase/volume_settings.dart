@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Gauge imports
@@ -78,7 +79,7 @@ class _VolumeSettingsState extends SampleViewState {
                     value: 100,
                     child: SizedBox(
                       height: 25,
-                      child: Text(_musicValue.toStringAsFixed(0) + '%'),
+                      child: Text('${_musicValue.toStringAsFixed(0)}%'),
                     )),
                 LinearWidgetPointer(
                   value: 5,
@@ -178,7 +179,7 @@ class _VolumeSettingsState extends SampleViewState {
                         enableAnimation: false,
                         child: SizedBox(
                           height: 25,
-                          child: Text(_ringValue.toStringAsFixed(0) + '%'),
+                          child: Text('${_ringValue.toStringAsFixed(0)}%'),
                         )),
                     LinearShapePointer(
                         value: _ringValue - 20,
@@ -234,7 +235,7 @@ class _VolumeSettingsState extends SampleViewState {
                       value: 100,
                       child: SizedBox(
                         height: 25,
-                        child: Text(_alarmValue.toStringAsFixed(0) + '%'),
+                        child: Text('${_alarmValue.toStringAsFixed(0)}%'),
                       )),
                   LinearWidgetPointer(
                     value: 5,

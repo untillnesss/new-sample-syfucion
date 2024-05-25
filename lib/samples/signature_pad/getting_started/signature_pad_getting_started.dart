@@ -106,7 +106,7 @@ class _GettingStartedSignaturePadState extends SampleViewState {
                   children: <Widget>[
                     Icon(Icons.brightness_1,
                         size: 25.0, color: _strokeColors[i]),
-                    if (_selectedPenIndex != null && _selectedPenIndex == i)
+                    if (_selectedPenIndex == i)
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: Icon(Icons.check,
@@ -477,7 +477,7 @@ class _GettingStartedSignaturePadState extends SampleViewState {
                         fontSize: _fontSizeRegular, color: _getTextColor()),
                     textAlign: TextAlign.end),
                 const SizedBox(height: 5),
-                Text('Date: ' + formattedTime,
+                Text('Date: $formattedTime',
                     textScaler: TextScaler.noScaling,
                     style: TextStyle(
                         fontSize: _fontSizeRegular, color: _getTextColor()),

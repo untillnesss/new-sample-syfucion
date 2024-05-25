@@ -1,4 +1,5 @@
 /// Package import
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -184,8 +185,8 @@ class _FunnelDefaultState extends SampleViewState {
         yValueMapper: (ChartSampleData data, _) => data.y,
         explode: isCardView ? false : explode,
         gapRatio: isCardView ? 0 : gapRatio,
-        neckHeight: isCardView ? '20%' : neckHeight.toString() + '%',
-        neckWidth: isCardView ? '20%' : neckWidth.toString() + '%',
+        neckHeight: isCardView ? '20%' : '$neckHeight%',
+        neckWidth: isCardView ? '20%' : '$neckWidth%',
         dataLabelSettings: const DataLabelSettings(isVisible: true));
   }
 }

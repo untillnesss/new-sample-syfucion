@@ -1,4 +1,5 @@
 /// Package import
+library;
 import 'package:flutter/cupertino.dart';
 
 /// DataGrid import
@@ -11,7 +12,7 @@ import './datagridsource/orderinfo_datagridsource.dart';
 /// Renders filtering data grid
 class FilteringDataGrid extends SampleView {
   /// Creates filtering data grid
-  const FilteringDataGrid({Key? key}) : super(key: key);
+  const FilteringDataGrid({super.key});
 
   @override
   _FilteringDataGridState createState() => _FilteringDataGridState();

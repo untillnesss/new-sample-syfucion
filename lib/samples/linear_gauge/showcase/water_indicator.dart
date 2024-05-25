@@ -114,7 +114,7 @@ class _WaterLevelIndicatorState extends SampleViewState {
                   height: 20,
                   child: Center(
                       child: Text(
-                    _level.toStringAsFixed(0) + ' ml',
+                    '${_level.toStringAsFixed(0)} ml',
                     style: TextStyle(
                         color: brightness == Brightness.light
                             ? Colors.black

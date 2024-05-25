@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -35,7 +36,7 @@ class _PopUpDatePickerState extends SampleViewState
   /// Update the selected date for the date range picker based on the date selected,
   /// when the trip mode set one way.
   void _onSelectedDateChanged(DateTime date) {
-    if (date == null || date == _startDate) {
+    if (date == _startDate) {
       return;
     }
 
@@ -412,8 +413,7 @@ class _PopUpDatePickerState extends SampleViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: model.themeData == null ||
-              model.themeData.colorScheme.brightness == Brightness.light
+      backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
           ? null
           : const Color(0x00171a21),
       body: model.isWebFullView
@@ -437,7 +437,7 @@ picker.SfDateRangePicker getPopUpDatePicker() {
 class DateRangePicker extends StatefulWidget {
   /// Creates Date range picker
   const DateRangePicker(this.date, this.range,
-      {this.minDate, this.maxDate, this.displayDate, required this.model});
+      {super.key, this.minDate, this.maxDate, this.displayDate, required this.model});
 
   /// Holds date value
   final dynamic date;
@@ -699,11 +699,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
 
   String getFormattedHijriString(
       HijriDateTime date, SfLocalizations localizations, String monthFormat) {
-    return date.day.toString() +
-        ' ' +
-        getHijriMonthText(date, localizations, monthFormat) +
-        ' ' +
-        date.year.toString();
+    return '${date.day} ${getHijriMonthText(date, localizations, monthFormat)} ${date.year}';
   }
 
   String getHijriMonthText(

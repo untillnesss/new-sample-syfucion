@@ -1,4 +1,5 @@
 ///Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -243,10 +244,10 @@ class _RangeSelectorBarChartPageState extends SampleViewState
     }
 
     if (profit >= 0) {
-      _profitText = 'Total profit: ' + profit.roundToDouble().toString() + '%';
+      _profitText = 'Total profit: ${profit.roundToDouble()}%';
     } else {
       _profitText =
-          'Total loss: ' + (-1 * profit.roundToDouble()).toString() + '%';
+          'Total loss: ${-1 * profit.roundToDouble()}%';
     }
   }
 }

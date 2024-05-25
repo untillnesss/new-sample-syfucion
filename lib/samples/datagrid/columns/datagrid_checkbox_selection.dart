@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/material.dart';
 
 /// DataGrid import
@@ -12,7 +13,7 @@ import '../datagridsource/orderinfo_datagridsource.dart';
 /// Renders datagrid with Checkbox column option
 class CheckboxSelectionDataGrid extends SampleView {
   /// Creates datagrid with Checkbox column option
-  const CheckboxSelectionDataGrid({Key? key}) : super(key: key);
+  const CheckboxSelectionDataGrid({super.key});
 
   @override
   _CheckboxSelectionDataGridState createState() =>

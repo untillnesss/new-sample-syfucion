@@ -91,7 +91,6 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
     super.initState();
     _documentPath = 'assets/pdf/gis_succinctly.pdf';
     _isDesktopWeb = isDesktop &&
-        model.isMobileResolution != null &&
         !model.isMobileResolution;
     if (_isDesktopWeb) {
       helper.preventDefaultContextMenu();
@@ -121,7 +120,6 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
       _needToMaximize = model.needToMaximize;
     }
     _isDesktopWeb = isDesktop &&
-        model.isMobileResolution != null &&
         !model.isMobileResolution;
     _fillColor = _useMaterial3
         ? Theme.of(context).colorScheme.onSurface.withOpacity(0.08)
@@ -665,37 +663,35 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
               offset: Offset(0, 3),
             ),
           ];
-    if (toolbarItemRenderBox != null) {
-      final Offset position =
-          positionOverride ?? toolbarItemRenderBox.localToGlobal(Offset.zero);
-      overlayState = Overlay.of(context, rootOverlay: true);
-      overlayEntry = OverlayEntry(
-        builder: (BuildContext context) => Positioned(
-          top: position.dy + 40.0, // y position of zoom percentage menu
-          left: _settingsOverlayEntry != null
-              ? position.dx - 151.0
-              : position.dx, // x position of zoom percentage menu
-          child: Container(
-            decoration: BoxDecoration(
-              color: _useMaterial3
-                  ? _isLight
-                      ? const Color.fromRGBO(238, 232, 244, 1)
-                      : const Color.fromRGBO(48, 45, 56, 1)
-                  : _isLight
-                      ? const Color(0xFFFFFFFF)
-                      : const Color(0xFF424242),
-              boxShadow: boxShadows,
-              borderRadius: _useMaterial3
-                  ? BorderRadius.all(Radius.circular(borderRadius ?? 4.0))
-                  : null,
-            ),
-            constraints: constraints,
-            child: dropDownItems,
+    final Offset position =
+        positionOverride ?? toolbarItemRenderBox.localToGlobal(Offset.zero);
+    overlayState = Overlay.of(context, rootOverlay: true);
+    overlayEntry = OverlayEntry(
+      builder: (BuildContext context) => Positioned(
+        top: position.dy + 40.0, // y position of zoom percentage menu
+        left: _settingsOverlayEntry != null
+            ? position.dx - 151.0
+            : position.dx, // x position of zoom percentage menu
+        child: Container(
+          decoration: BoxDecoration(
+            color: _useMaterial3
+                ? _isLight
+                    ? const Color.fromRGBO(238, 232, 244, 1)
+                    : const Color.fromRGBO(48, 45, 56, 1)
+                : _isLight
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFF424242),
+            boxShadow: boxShadows,
+            borderRadius: _useMaterial3
+                ? BorderRadius.all(Radius.circular(borderRadius ?? 4.0))
+                : null,
           ),
+          constraints: constraints,
+          child: dropDownItems,
         ),
-      );
-    }
-    overlayState?.insert(overlayEntry!);
+      ),
+    );
+      overlayState.insert(overlayEntry);
     return overlayEntry;
   }
 
@@ -706,29 +702,27 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
       final RenderBox searchRenderBox = (_toolbarKey
           .currentState?._searchKey.currentContext
           ?.findRenderObject())! as RenderBox;
-      if (searchRenderBox != null) {
-        final Offset position = searchRenderBox.localToGlobal(Offset.zero);
-        final OverlayState overlayState =
-            Overlay.of(context, rootOverlay: true);
-        overlayState.insert(_textSearchOverlayEntry = OverlayEntry(
-          builder: (BuildContext context) {
-            return Positioned(
-              top: position.dy + 40.0, // y position of search menu
-              left: (MediaQuery.of(context).size.width - 8) -
-                  _kSearchOverlayWidth, // x position of search menu
-              child: TextSearchOverlay(
-                key: _textSearchOverlayKey,
-                controller: _pdfViewerController,
-                textSearchOverlayEntry: _textSearchOverlayEntry,
-                onClose: _handleSearchMenuClose,
-                brightness: model.themeData.colorScheme.brightness,
-                primaryColor: model.primaryColor,
-              ),
-            );
-          },
-        ));
-      }
-    }
+      final Offset position = searchRenderBox.localToGlobal(Offset.zero);
+      final OverlayState overlayState =
+          Overlay.of(context, rootOverlay: true);
+      overlayState.insert(_textSearchOverlayEntry = OverlayEntry(
+        builder: (BuildContext context) {
+          return Positioned(
+            top: position.dy + 40.0, // y position of search menu
+            left: (MediaQuery.of(context).size.width - 8) -
+                _kSearchOverlayWidth, // x position of search menu
+            child: TextSearchOverlay(
+              key: _textSearchOverlayKey,
+              controller: _pdfViewerController,
+              textSearchOverlayEntry: _textSearchOverlayEntry,
+              onClose: _handleSearchMenuClose,
+              brightness: model.themeData.colorScheme.brightness,
+              primaryColor: model.primaryColor,
+            ),
+          );
+        },
+      ));
+        }
   }
 
   /// Close search menu for web platform.
@@ -748,35 +742,33 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
     final RenderBox chooseFileRenderBox = (_toolbarKey
         .currentState?._chooseFileKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (chooseFileRenderBox != null) {
-      final Column child = Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _chooseFileEntry('GIS Succinctly', 'assets/pdf/gis_succinctly.pdf'),
-          _chooseFileEntry('HTTP Succinctly', 'assets/pdf/http_succinctly.pdf'),
-          _chooseFileEntry(
-              'JavaScript Succinctly', 'assets/pdf/javascript_succinctly.pdf'),
-          _chooseFileEntry(
-              'Rotated Document', 'assets/pdf/rotated_document.pdf'),
-          _chooseFileEntry(
-              'Single Page Document', 'assets/pdf/single_page_document.pdf'),
-          _chooseFileEntry(
-              'Encrypted Document', 'assets/pdf/encrypted_document.pdf'),
-          _chooseFileEntry(
-              'Corrupted Document', 'assets/pdf/corrupted_document.pdf'),
-        ],
-      );
-      _chooseFileOverlayEntry = _showDropDownOverlay(
-          chooseFileRenderBox,
-          _chooseFileOverlayEntry,
-          _useMaterial3
-              ? BoxConstraints.tightFor(
-                  width: 205, height: child.children.length * 40.0)
-              : BoxConstraints.tightFor(
-                  width: 202, height: child.children.length * 35.0),
-          child);
+    final Column child = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _chooseFileEntry('GIS Succinctly', 'assets/pdf/gis_succinctly.pdf'),
+        _chooseFileEntry('HTTP Succinctly', 'assets/pdf/http_succinctly.pdf'),
+        _chooseFileEntry(
+            'JavaScript Succinctly', 'assets/pdf/javascript_succinctly.pdf'),
+        _chooseFileEntry(
+            'Rotated Document', 'assets/pdf/rotated_document.pdf'),
+        _chooseFileEntry(
+            'Single Page Document', 'assets/pdf/single_page_document.pdf'),
+        _chooseFileEntry(
+            'Encrypted Document', 'assets/pdf/encrypted_document.pdf'),
+        _chooseFileEntry(
+            'Corrupted Document', 'assets/pdf/corrupted_document.pdf'),
+      ],
+    );
+    _chooseFileOverlayEntry = _showDropDownOverlay(
+        chooseFileRenderBox,
+        _chooseFileOverlayEntry,
+        _useMaterial3
+            ? BoxConstraints.tightFor(
+                width: 205, height: child.children.length * 40.0)
+            : BoxConstraints.tightFor(
+                width: 202, height: child.children.length * 35.0),
+        child);
     }
-  }
 
   /// Close choose file menu for web platform.
   void _handleChooseFileClose() {
@@ -839,26 +831,24 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
     final RenderBox zoomPercentageRenderBox = (_toolbarKey
         .currentState?._zoomPercentageKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (zoomPercentageRenderBox != null) {
-      final Column child = Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _zoomPercentageDropDownItem('100%', 1),
-          _zoomPercentageDropDownItem('125%', 1.25),
-          _zoomPercentageDropDownItem('150%', 1.50),
-          _zoomPercentageDropDownItem('200%', 2),
-          _zoomPercentageDropDownItem('300%', 3),
-        ],
-      );
-      _zoomPercentageOverlay = _showDropDownOverlay(
-          zoomPercentageRenderBox,
-          _zoomPercentageOverlay,
-          _useMaterial3
-              ? const BoxConstraints.tightFor(width: 85, height: 216)
-              : const BoxConstraints.tightFor(width: 120, height: 160),
-          child);
+    final Column child = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _zoomPercentageDropDownItem('100%', 1),
+        _zoomPercentageDropDownItem('125%', 1.25),
+        _zoomPercentageDropDownItem('150%', 1.50),
+        _zoomPercentageDropDownItem('200%', 2),
+        _zoomPercentageDropDownItem('300%', 3),
+      ],
+    );
+    _zoomPercentageOverlay = _showDropDownOverlay(
+        zoomPercentageRenderBox,
+        _zoomPercentageOverlay,
+        _useMaterial3
+            ? const BoxConstraints.tightFor(width: 85, height: 216)
+            : const BoxConstraints.tightFor(width: 120, height: 160),
+        child);
     }
-  }
 
   /// Close zoom percentage menu for web platform.
   void _handleZoomPercentageClose() {
@@ -933,85 +923,83 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
         MediaQuery.of(context).orientation == Orientation.landscape
             ? landscapeHeight
             : 191.0;
-    if (settingsRenderBox != null) {
-      _settingsOverlayEntry = _showDropDownOverlay(
-          settingsRenderBox,
-          _settingsOverlayEntry,
-          _useMaterial3
-              ? BoxConstraints.tightFor(width: 205.0, height: totalHeight)
-              : BoxConstraints.tightFor(width: 191.0, height: totalHeight),
-          SingleChildScrollView(
-            child: SizedBox(
-              height: 191.0,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: _settingsDropDownItem(
-                        'images/pdf_viewer/continuous_page.png',
-                        'Continuous Page',
-                        _isContinuousModeClicked, () {
-                      setState(() {
-                        _isContinuousModeClicked = true;
-                        if (_pageLayoutMode != PdfPageLayoutMode.continuous) {
-                          _pageLayoutMode = PdfPageLayoutMode.continuous;
-                          _scrollDirection = PdfScrollDirection.vertical;
-                          _isVerticalModeSelected = true;
-                        }
-                      });
-                      _handleSettingsMenuClose();
-                    }),
-                  ),
-                  _settingsDropDownItem('images/pdf_viewer/page_by_page.png',
-                      'Page by page', !_isContinuousModeClicked, () {
+    _settingsOverlayEntry = _showDropDownOverlay(
+        settingsRenderBox,
+        _settingsOverlayEntry,
+        _useMaterial3
+            ? BoxConstraints.tightFor(width: 205.0, height: totalHeight)
+            : BoxConstraints.tightFor(width: 191.0, height: totalHeight),
+        SingleChildScrollView(
+          child: SizedBox(
+            height: 191.0,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: _settingsDropDownItem(
+                      'images/pdf_viewer/continuous_page.png',
+                      'Continuous Page',
+                      _isContinuousModeClicked, () {
                     setState(() {
-                      _isContinuousModeClicked = false;
-                      if (_pageLayoutMode != PdfPageLayoutMode.single) {
-                        _pageLayoutMode = PdfPageLayoutMode.single;
-                        _scrollDirection = PdfScrollDirection.horizontal;
-                        _isVerticalModeSelected = false;
+                      _isContinuousModeClicked = true;
+                      if (_pageLayoutMode != PdfPageLayoutMode.continuous) {
+                        _pageLayoutMode = PdfPageLayoutMode.continuous;
+                        _scrollDirection = PdfScrollDirection.vertical;
+                        _isVerticalModeSelected = true;
                       }
                     });
                     _handleSettingsMenuClose();
                   }),
-                  Divider(
-                    thickness: 1,
-                    color: _useMaterial3
-                        ? model.themeData.colorScheme.outlineVariant
-                        : _isLight
-                            ? Colors.black.withOpacity(0.24)
-                            : const Color.fromRGBO(255, 255, 255, 0.26),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      _settingsDropDownItem(
-                          'images/pdf_viewer/vertical_scrolling.png',
-                          'Vertical scrolling',
-                          _isVerticalModeSelected, () {
-                        setState(() {
-                          _isVerticalModeSelected = true;
-                          _scrollDirection = PdfScrollDirection.vertical;
-                        });
-                        _handleSettingsMenuClose();
-                      }),
-                      _settingsDropDownItem(
-                          'images/pdf_viewer/horizontal_scrolling.png',
-                          'Horizontal scrolling',
-                          !_isVerticalModeSelected, () {
-                        setState(() {
-                          _isVerticalModeSelected = false;
-                          _scrollDirection = PdfScrollDirection.horizontal;
-                        });
-                        _handleSettingsMenuClose();
-                      }),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+                _settingsDropDownItem('images/pdf_viewer/page_by_page.png',
+                    'Page by page', !_isContinuousModeClicked, () {
+                  setState(() {
+                    _isContinuousModeClicked = false;
+                    if (_pageLayoutMode != PdfPageLayoutMode.single) {
+                      _pageLayoutMode = PdfPageLayoutMode.single;
+                      _scrollDirection = PdfScrollDirection.horizontal;
+                      _isVerticalModeSelected = false;
+                    }
+                  });
+                  _handleSettingsMenuClose();
+                }),
+                Divider(
+                  thickness: 1,
+                  color: _useMaterial3
+                      ? model.themeData.colorScheme.outlineVariant
+                      : _isLight
+                          ? Colors.black.withOpacity(0.24)
+                          : const Color.fromRGBO(255, 255, 255, 0.26),
+                ),
+                Column(
+                  children: <Widget>[
+                    _settingsDropDownItem(
+                        'images/pdf_viewer/vertical_scrolling.png',
+                        'Vertical scrolling',
+                        _isVerticalModeSelected, () {
+                      setState(() {
+                        _isVerticalModeSelected = true;
+                        _scrollDirection = PdfScrollDirection.vertical;
+                      });
+                      _handleSettingsMenuClose();
+                    }),
+                    _settingsDropDownItem(
+                        'images/pdf_viewer/horizontal_scrolling.png',
+                        'Horizontal scrolling',
+                        !_isVerticalModeSelected, () {
+                      setState(() {
+                        _isVerticalModeSelected = false;
+                        _scrollDirection = PdfScrollDirection.horizontal;
+                      });
+                      _handleSettingsMenuClose();
+                    }),
+                  ],
+                ),
+              ],
             ),
-          ));
+          ),
+        ));
     }
-  }
 
   /// Close settings overlay
   void _handleSettingsMenuClose() {
@@ -1082,84 +1070,82 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
     final RenderBox textMarkupRenderBox = (_toolbarKey
         .currentState?._textMarkupKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (textMarkupRenderBox != null) {
-      final Widget child = Container(
-        width: _kTextMarkupMenuWidth,
-        height: _kTextMarkupMenuHeight,
-        decoration: ShapeDecoration(
-          color: _contextMenuColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    final Widget child = Container(
+      width: _kTextMarkupMenuWidth,
+      height: _kTextMarkupMenuHeight,
+      decoration: ShapeDecoration(
+        color: _contextMenuColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextMarkupMenuItem(
+              mode: 'Highlight',
+              height: _kTextMarkupMenuItemHeight,
+              width: _kTextMarkupMenuWidth,
+              model: model,
+              onPressed: () {
+                _pdfViewerController.annotationMode =
+                    PdfAnnotationMode.highlight;
+                _toolbarKey.currentState
+                    ?._changeToolbarItemVisibility('Color Palette', true);
+                _handleTextMarkupOverlayClose();
+              },
+            ),
+            TextMarkupMenuItem(
+              mode: 'Underline',
+              height: _kTextMarkupMenuItemHeight,
+              width: _kTextMarkupMenuWidth,
+              model: model,
+              onPressed: () {
+                _pdfViewerController.annotationMode =
+                    PdfAnnotationMode.underline;
+                _toolbarKey.currentState
+                    ?._changeToolbarItemVisibility('Color Palette', true);
+                _handleTextMarkupOverlayClose();
+              },
+            ),
+            TextMarkupMenuItem(
+              mode: 'Strikethrough',
+              height: _kTextMarkupMenuItemHeight,
+              width: _kTextMarkupMenuWidth,
+              model: model,
+              onPressed: () {
+                _pdfViewerController.annotationMode =
+                    PdfAnnotationMode.strikethrough;
+                _toolbarKey.currentState
+                    ?._changeToolbarItemVisibility('Color Palette', true);
+                _handleTextMarkupOverlayClose();
+              },
+            ),
+            TextMarkupMenuItem(
+              mode: 'Squiggly',
+              height: _kTextMarkupMenuItemHeight,
+              width: _kTextMarkupMenuWidth,
+              model: model,
+              onPressed: () {
+                _pdfViewerController.annotationMode =
+                    PdfAnnotationMode.squiggly;
+                _toolbarKey.currentState
+                    ?._changeToolbarItemVisibility('Color Palette', true);
+                _handleTextMarkupOverlayClose();
+              },
+            ),
+          ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TextMarkupMenuItem(
-                mode: 'Highlight',
-                height: _kTextMarkupMenuItemHeight,
-                width: _kTextMarkupMenuWidth,
-                model: model,
-                onPressed: () {
-                  _pdfViewerController.annotationMode =
-                      PdfAnnotationMode.highlight;
-                  _toolbarKey.currentState
-                      ?._changeToolbarItemVisibility('Color Palette', true);
-                  _handleTextMarkupOverlayClose();
-                },
-              ),
-              TextMarkupMenuItem(
-                mode: 'Underline',
-                height: _kTextMarkupMenuItemHeight,
-                width: _kTextMarkupMenuWidth,
-                model: model,
-                onPressed: () {
-                  _pdfViewerController.annotationMode =
-                      PdfAnnotationMode.underline;
-                  _toolbarKey.currentState
-                      ?._changeToolbarItemVisibility('Color Palette', true);
-                  _handleTextMarkupOverlayClose();
-                },
-              ),
-              TextMarkupMenuItem(
-                mode: 'Strikethrough',
-                height: _kTextMarkupMenuItemHeight,
-                width: _kTextMarkupMenuWidth,
-                model: model,
-                onPressed: () {
-                  _pdfViewerController.annotationMode =
-                      PdfAnnotationMode.strikethrough;
-                  _toolbarKey.currentState
-                      ?._changeToolbarItemVisibility('Color Palette', true);
-                  _handleTextMarkupOverlayClose();
-                },
-              ),
-              TextMarkupMenuItem(
-                mode: 'Squiggly',
-                height: _kTextMarkupMenuItemHeight,
-                width: _kTextMarkupMenuWidth,
-                model: model,
-                onPressed: () {
-                  _pdfViewerController.annotationMode =
-                      PdfAnnotationMode.squiggly;
-                  _toolbarKey.currentState
-                      ?._changeToolbarItemVisibility('Color Palette', true);
-                  _handleTextMarkupOverlayClose();
-                },
-              ),
-            ],
-          ),
-        ),
-      );
-      _textMarkupOverlayEntry = _showDropDownOverlay(
-          textMarkupRenderBox,
-          _textMarkupOverlayEntry,
-          BoxConstraints.tightFor(
-              width: _kTextMarkupMenuWidth, height: _kTextMarkupMenuHeight),
-          child);
+      ),
+    );
+    _textMarkupOverlayEntry = _showDropDownOverlay(
+        textMarkupRenderBox,
+        _textMarkupOverlayEntry,
+        BoxConstraints.tightFor(
+            width: _kTextMarkupMenuWidth, height: _kTextMarkupMenuHeight),
+        child);
     }
-  }
 
   /// Close text markup menu for web platform.
   void _handleTextMarkupOverlayClose() {
@@ -1178,30 +1164,28 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
     final RenderBox colorPaletteRenderBox = (_toolbarKey
         .currentState?._colorPaletteKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (colorPaletteRenderBox != null) {
-      final Widget child = ColorPalette(
-        pdfViewerController: _pdfViewerController,
-        model: model,
-        selectedAnnotation: _selectedAnnotation,
-        selectedColor: _selectedColor,
-        selectedOpacity: _opacity,
-        onColorChanged: (Color color) {
-          _selectedColor = color;
-        },
-      );
-      final Offset position = colorPaletteRenderBox.localToGlobal(
-          Offset(-(_kColorPaletteWidth - colorPaletteRenderBox.size.width), 0));
-      _colorPaletteOverlayEntry = _showDropDownOverlay(
-        colorPaletteRenderBox,
-        _colorPaletteOverlayEntry,
-        BoxConstraints.tightFor(
-            width: _kColorPaletteWidth, height: _kColorPaletteHeight),
-        child,
-        position,
-        12,
-      );
+    final Widget child = ColorPalette(
+      pdfViewerController: _pdfViewerController,
+      model: model,
+      selectedAnnotation: _selectedAnnotation,
+      selectedColor: _selectedColor,
+      selectedOpacity: _opacity,
+      onColorChanged: (Color color) {
+        _selectedColor = color;
+      },
+    );
+    final Offset position = colorPaletteRenderBox.localToGlobal(
+        Offset(-(_kColorPaletteWidth - colorPaletteRenderBox.size.width), 0));
+    _colorPaletteOverlayEntry = _showDropDownOverlay(
+      colorPaletteRenderBox,
+      _colorPaletteOverlayEntry,
+      BoxConstraints.tightFor(
+          width: _kColorPaletteWidth, height: _kColorPaletteHeight),
+      child,
+      position,
+      12,
+    );
     }
-  }
 
   /// Close color palette menu for web platform.
   void _handleColorPaletteOverlayClose() {
@@ -1215,13 +1199,6 @@ class _CustomToolbarPdfViewerState extends SampleViewState {
 
   @override
   Widget build(BuildContext context) {
-    if (isDesktop) {
-      final bool? isDrawerOpened = model.webOutputContainerState.widget
-          .webLayoutPageState?.scaffoldKey.currentState?.isEndDrawerOpen;
-      if (isDrawerOpened != null && isDrawerOpened) {
-        _closeOverlays();
-      }
-    }
     if (model.isMobile) {
       if (_deviceOrientation != MediaQuery.of(context).orientation) {
         if (_settingsOverlayEntry != null) {
@@ -1736,8 +1713,8 @@ class Toolbar extends StatefulWidget {
     this.onTap,
     this.showTooltip = true,
     this.model,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Indicates whether tooltip for the toolbar items need to be shown or not..
   final bool showTooltip;

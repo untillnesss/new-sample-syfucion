@@ -1,4 +1,5 @@
 /// Package import
+library;
 import 'package:flutter/material.dart';
 
 /// DataGrid import
@@ -12,7 +13,7 @@ import 'datagridsource/orderinfo_datagridsource.dart';
 /// Renders datagrid with table summary row feature.
 class TableSummaryDataGrid extends SampleView {
   /// Creates datagrid to show table summary rows.
-  const TableSummaryDataGrid({Key? key}) : super(key: key);
+  const TableSummaryDataGrid({super.key});
 
   @override
   _TableSummaryDataGridState createState() => _TableSummaryDataGridState();

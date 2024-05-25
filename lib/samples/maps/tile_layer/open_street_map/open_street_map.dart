@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 ///Map import
@@ -217,9 +218,7 @@ class _TileLayerSampleState extends SampleViewState {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 5.0),
                                     child: Text(
-                                      _worldWonders[index].state +
-                                          ', ' +
-                                          _worldWonders[index].country,
+                                      '${_worldWonders[index].state}, ${_worldWonders[index].country}',
                                       style: const TextStyle(
                                           fontSize: 10, color: Colors.black),
                                     ),
@@ -308,7 +307,7 @@ class _TileLayerSampleState extends SampleViewState {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(item.place + ', ' + item.country,
+                                Text('${item.place}, ${item.country}',
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),

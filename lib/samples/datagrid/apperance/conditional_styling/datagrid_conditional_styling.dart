@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode import
@@ -12,7 +13,7 @@ import '../../datagridsource/stock_datagridsource.dart';
 /// Render data grid with conditional styling
 class ConditionalStylingDataGrid extends SampleView {
   /// Creates data grid with conditional styling
-  const ConditionalStylingDataGrid({Key? key}) : super(key: key);
+  const ConditionalStylingDataGrid({super.key});
 
   @override
   _ConditionalStylingDataGridState createState() =>

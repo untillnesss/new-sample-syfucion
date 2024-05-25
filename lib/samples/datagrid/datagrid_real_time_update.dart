@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:async';
 
 /// Package imports
@@ -15,7 +16,7 @@ import 'datagridsource/realtime_datagridsource.dart';
 /// Renders real time value change data grid
 class RealTimeUpdateDataGrid extends SampleView {
   /// Creates real time value change data grid
-  const RealTimeUpdateDataGrid({Key? key}) : super(key: key);
+  const RealTimeUpdateDataGrid({super.key});
 
   @override
   _RealTimeUpdateDataGridPageState createState() =>

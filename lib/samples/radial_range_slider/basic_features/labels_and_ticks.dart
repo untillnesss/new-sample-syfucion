@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -290,13 +291,13 @@ class _RadialRangeSliderLabelsTicksState extends SampleViewState {
 class CustomAnimatedBuilder extends StatefulWidget {
   /// Creates a instance for [CustomAnimatedBuilder].
   const CustomAnimatedBuilder({
-    Key? key,
+    super.key,
     required this.value,
     required this.builder,
     this.duration = const Duration(milliseconds: 200),
     this.curve = Curves.easeInOut,
     this.child,
-  }) : super(key: key);
+  });
 
   /// Specifies the animation duration.
   final Duration duration;

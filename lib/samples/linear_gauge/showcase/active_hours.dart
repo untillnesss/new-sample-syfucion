@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Gauge imports

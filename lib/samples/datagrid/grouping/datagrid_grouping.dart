@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ import '../datagridsource/orderinfo_datagridsource.dart';
 /// Renders grouping data grid
 class GroupingDataGrid extends SampleView {
   /// Creates grouping data grid
-  const GroupingDataGrid({Key? key}) : super(key: key);
+  const GroupingDataGrid({super.key});
 
   @override
   _GroupingDataGridState createState() => _GroupingDataGridState();

@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode import
@@ -12,7 +13,7 @@ import 'datagridsource/orderinfo_datagridsource.dart';
 /// Renders datagrid with selection option(single/multiple and select/unselect)
 class SelectionDataGrid extends SampleView {
   /// Creates datagrid with selection option(single/multiple and select/unselect)
-  const SelectionDataGrid({Key? key}) : super(key: key);
+  const SelectionDataGrid({super.key});
 
   @override
   _SelectionDataGridPageState createState() => _SelectionDataGridPageState();

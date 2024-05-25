@@ -1,5 +1,6 @@
 /// Package imports
 /// import 'package:flutter/foundation.dart';
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode import
@@ -13,7 +14,7 @@ import 'datagridsource/team_datagridsource.dart';
 /// Render getting started data grid
 class GettingStartedDataGrid extends SampleView {
   /// Creates getting started data grid
-  const GettingStartedDataGrid({Key? key}) : super(key: key);
+  const GettingStartedDataGrid({super.key});
 
   @override
   _GettingStartedDataGridState createState() => _GettingStartedDataGridState();
@@ -72,7 +73,7 @@ class _GettingStartedDataGridState extends SampleViewState {
       children: <Widget>[
         Image.asset('images/location.png'),
         Text(
-          ' ' + location,
+          ' $location',
         )
       ],
     );

@@ -1,4 +1,5 @@
 ///Package import
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,7 +53,6 @@ class _RTLModePdfViewerState extends DirectionalitySampleViewState {
     super.initState();
     _documentPath = 'assets/pdf/rtl_document.pdf';
     _isDesktopWeb = isDesktop &&
-        model.isMobileResolution != null &&
         !model.isMobileResolution;
     if (_isDesktopWeb) {
       helper.preventDefaultContextMenu();
@@ -75,7 +75,6 @@ class _RTLModePdfViewerState extends DirectionalitySampleViewState {
       _needToMaximize = model.needToMaximize;
     }
     _isDesktopWeb = isDesktop &&
-        model.isMobileResolution != null &&
         !model.isMobileResolution;
   }
 
@@ -127,40 +126,38 @@ class _RTLModePdfViewerState extends DirectionalitySampleViewState {
         offset: Offset(0, 3),
       ),
     ];
-    if (toolbarItemRenderBox != null) {
-      final Offset position = toolbarItemRenderBox.localToGlobal(Offset.zero);
-      double left = position.dx;
-      width != 0
-          ? model.textDirection == TextDirection.ltr
-              ? left = position.dx
-              : left = position.dx - width
-          : left = position.dx;
-      overlayState = Overlay.of(context, rootOverlay: true);
-      overlayEntry = OverlayEntry(
-        builder: (BuildContext context) => Positioned(
-          top: position.dy + 40.0, // y position of zoom percentage menu
-          left: left, // x position of zoom percentage menu
-          child: Container(
-            decoration: BoxDecoration(
-              color: _useMaterial3
-                  ? _isLight
-                      ? const Color.fromRGBO(238, 232, 244, 1)
-                      : const Color.fromRGBO(48, 45, 56, 1)
-                  : _isLight
-                      ? const Color(0xFFFFFFFF)
-                      : const Color(0xFF424242),
-              boxShadow: boxShadows,
-              borderRadius: _useMaterial3
-                  ? const BorderRadius.all(Radius.circular(4.0))
-                  : null,
-            ),
-            constraints: constraints,
-            child: dropDownItems,
+    final Offset position = toolbarItemRenderBox.localToGlobal(Offset.zero);
+    double left = position.dx;
+    width != 0
+        ? model.textDirection == TextDirection.ltr
+            ? left = position.dx
+            : left = position.dx - width
+        : left = position.dx;
+    overlayState = Overlay.of(context, rootOverlay: true);
+    overlayEntry = OverlayEntry(
+      builder: (BuildContext context) => Positioned(
+        top: position.dy + 40.0, // y position of zoom percentage menu
+        left: left, // x position of zoom percentage menu
+        child: Container(
+          decoration: BoxDecoration(
+            color: _useMaterial3
+                ? _isLight
+                    ? const Color.fromRGBO(238, 232, 244, 1)
+                    : const Color.fromRGBO(48, 45, 56, 1)
+                : _isLight
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFF424242),
+            boxShadow: boxShadows,
+            borderRadius: _useMaterial3
+                ? const BorderRadius.all(Radius.circular(4.0))
+                : null,
           ),
+          constraints: constraints,
+          child: dropDownItems,
         ),
-      );
-    }
-    overlayState?.insert(overlayEntry!);
+      ),
+    );
+      overlayState.insert(overlayEntry);
     return overlayEntry;
   }
 
@@ -170,33 +167,31 @@ class _RTLModePdfViewerState extends DirectionalitySampleViewState {
       final RenderBox searchRenderBox = (_toolbarKey
           .currentState?._searchKey.currentContext
           ?.findRenderObject())! as RenderBox;
-      if (searchRenderBox != null) {
-        final Offset position = searchRenderBox.localToGlobal(Offset.zero);
-        final OverlayState overlayState =
-            Overlay.of(context, rootOverlay: true);
-        final double left = model.textDirection == TextDirection.rtl
-            ? position.dx
-            : ((MediaQuery.of(context).size.width - 8) - _kSearchOverlayWidth);
-        overlayState.insert(_textSearchOverlayEntry = OverlayEntry(
-          builder: (BuildContext context) {
-            return Positioned(
-              top: position.dy + 40.0, // y position of search menu
-              left: left, // x position of search menu
-              child: TextSearchOverlay(
-                key: _textSearchOverlayKey,
-                controller: _pdfViewerController,
-                textSearchOverlayEntry: _textSearchOverlayEntry,
-                onClose: _handleSearchMenuClose,
-                brightness: model.themeData.colorScheme.brightness,
-                primaryColor: model.primaryColor,
-                textDirection: model.textDirection,
-                languageCode: model.locale!.languageCode,
-              ),
-            );
-          },
-        ));
-      }
-    }
+      final Offset position = searchRenderBox.localToGlobal(Offset.zero);
+      final OverlayState overlayState =
+          Overlay.of(context, rootOverlay: true);
+      final double left = model.textDirection == TextDirection.rtl
+          ? position.dx
+          : ((MediaQuery.of(context).size.width - 8) - _kSearchOverlayWidth);
+      overlayState.insert(_textSearchOverlayEntry = OverlayEntry(
+        builder: (BuildContext context) {
+          return Positioned(
+            top: position.dy + 40.0, // y position of search menu
+            left: left, // x position of search menu
+            child: TextSearchOverlay(
+              key: _textSearchOverlayKey,
+              controller: _pdfViewerController,
+              textSearchOverlayEntry: _textSearchOverlayEntry,
+              onClose: _handleSearchMenuClose,
+              brightness: model.themeData.colorScheme.brightness,
+              primaryColor: model.primaryColor,
+              textDirection: model.textDirection,
+              languageCode: model.locale!.languageCode,
+            ),
+          );
+        },
+      ));
+        }
   }
 
   /// Close search menu for web platform.
@@ -214,29 +209,27 @@ class _RTLModePdfViewerState extends DirectionalitySampleViewState {
     final RenderBox chooseFileRenderBox = (_toolbarKey
         .currentState?._chooseFileKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (chooseFileRenderBox != null) {
-      final Column child = Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _chooseFileEntry('RTL Document', 'assets/pdf/rtl_document.pdf'),
-          _chooseFileEntry('GIS Succinctly', 'assets/pdf/gis_succinctly.pdf'),
-          _chooseFileEntry('HTTP Succinctly', 'assets/pdf/http_succinctly.pdf'),
-          _chooseFileEntry(
-              'JavaScript Succinctly', 'assets/pdf/javascript_succinctly.pdf'),
-        ],
-      );
-      _chooseFileOverlayEntry = _showDropDownOverlay(
-          chooseFileRenderBox,
-          _chooseFileOverlayEntry,
-          162,
-          _useMaterial3
-              ? BoxConstraints.tightFor(
-                  width: 205, height: child.children.length * 40.0)
-              : BoxConstraints.tightFor(
-                  width: 202, height: child.children.length * 35.0),
-          child);
+    final Column child = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _chooseFileEntry('RTL Document', 'assets/pdf/rtl_document.pdf'),
+        _chooseFileEntry('GIS Succinctly', 'assets/pdf/gis_succinctly.pdf'),
+        _chooseFileEntry('HTTP Succinctly', 'assets/pdf/http_succinctly.pdf'),
+        _chooseFileEntry(
+            'JavaScript Succinctly', 'assets/pdf/javascript_succinctly.pdf'),
+      ],
+    );
+    _chooseFileOverlayEntry = _showDropDownOverlay(
+        chooseFileRenderBox,
+        _chooseFileOverlayEntry,
+        162,
+        _useMaterial3
+            ? BoxConstraints.tightFor(
+                width: 205, height: child.children.length * 40.0)
+            : BoxConstraints.tightFor(
+                width: 202, height: child.children.length * 35.0),
+        child);
     }
-  }
 
   /// Close choose file menu for web platform.
   void _handleChooseFileClose() {
@@ -294,27 +287,25 @@ class _RTLModePdfViewerState extends DirectionalitySampleViewState {
     final RenderBox zoomPercentageRenderBox = (_toolbarKey
         .currentState?._zoomPercentageKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (zoomPercentageRenderBox != null) {
-      final Column child = Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _zoomPercentageDropDownItem('100%', 1),
-          _zoomPercentageDropDownItem('125%', 1.25),
-          _zoomPercentageDropDownItem('150%', 1.50),
-          _zoomPercentageDropDownItem('200%', 2),
-          _zoomPercentageDropDownItem('300%', 3),
-        ],
-      );
-      _zoomPercentageOverlay = _showDropDownOverlay(
-          zoomPercentageRenderBox,
-          _zoomPercentageOverlay,
-          0,
-          _useMaterial3
-              ? const BoxConstraints.tightFor(width: 85, height: 216)
-              : const BoxConstraints.tightFor(width: 120, height: 160),
-          child);
+    final Column child = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _zoomPercentageDropDownItem('100%', 1),
+        _zoomPercentageDropDownItem('125%', 1.25),
+        _zoomPercentageDropDownItem('150%', 1.50),
+        _zoomPercentageDropDownItem('200%', 2),
+        _zoomPercentageDropDownItem('300%', 3),
+      ],
+    );
+    _zoomPercentageOverlay = _showDropDownOverlay(
+        zoomPercentageRenderBox,
+        _zoomPercentageOverlay,
+        0,
+        _useMaterial3
+            ? const BoxConstraints.tightFor(width: 85, height: 216)
+            : const BoxConstraints.tightFor(width: 120, height: 160),
+        child);
     }
-  }
 
   /// Close zoom percentage menu for web platform.
   void _handleZoomPercentageClose() {
@@ -650,8 +641,8 @@ class Toolbar extends StatefulWidget {
     this.onTap,
     this.showTooltip = true,
     this.model,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Indicates whether tooltip for the toolbar items need to be shown or not..
   final bool showTooltip;

@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:async';
 
 /// Flutter package imports

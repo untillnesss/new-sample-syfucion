@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -82,7 +83,6 @@ class _PlotBandDefaultState extends SampleViewState {
   /// Return the types of plotbands.
   SfCartesianChart _buildPlotBandChart() {
     final Color plotbandYAxisTextColor = ((isSegment || isLine) &&
-            model != null &&
             model.themeData.colorScheme.brightness == Brightness.light)
         ? Colors.black54
         : const Color.fromRGBO(255, 255, 255, 1);
@@ -200,7 +200,6 @@ class _PlotBandDefaultState extends SampleViewState {
               text: 'High Temperature',
               color: const Color.fromRGBO(207, 85, 7, 1),
               textStyle: ((isSegment || isLine) &&
-                      model != null &&
                       model.themeData.colorScheme.brightness ==
                           Brightness.light)
                   ? const TextStyle(color: Colors.black)
@@ -228,7 +227,6 @@ class _PlotBandDefaultState extends SampleViewState {
               verticalTextPadding: isLine ? '-7' : '',
               color: const Color.fromRGBO(224, 155, 0, 1),
               textStyle: ((isSegment || isLine) &&
-                      model != null &&
                       model.themeData.colorScheme.brightness ==
                           Brightness.light)
                   ? const TextStyle(color: Colors.black)
@@ -256,7 +254,6 @@ class _PlotBandDefaultState extends SampleViewState {
               verticalTextPadding: isLine ? '-7' : '',
               color: const Color.fromRGBO(237, 195, 12, 1),
               textStyle: ((isSegment || isLine) &&
-                      model != null &&
                       model.themeData.colorScheme.brightness ==
                           Brightness.light)
                   ? const TextStyle(color: Colors.black)
@@ -273,7 +270,6 @@ class _PlotBandDefaultState extends SampleViewState {
 
   List<XyDataSeries<ChartSampleData, String>> _getPlotBandSeries() {
     final Color seriesColor = (isSegment || isLine) &&
-            model != null &&
             model.themeData.colorScheme.brightness == Brightness.light
         ? Colors.black54
         : Colors.white;

@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:core';
 
 /// Package import
@@ -14,7 +15,7 @@ import 'datagridsource/dealer_datagridsource.dart';
 /// Render data grid with editing.
 class EditingDataGrid extends SampleView {
   /// Create data grid with editing.
-  const EditingDataGrid({Key? key}) : super(key: key);
+  const EditingDataGrid({super.key});
 
   @override
   _EditingDataGridState createState() => _EditingDataGridState();

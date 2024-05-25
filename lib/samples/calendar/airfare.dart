@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:math';
 
 ///Package imports
@@ -110,7 +111,7 @@ class _AirFareCalendarCalendarState extends SampleViewState {
       final String fare = _fares[i % _fares.length];
       final Color color = _getAirPlaneColor(id);
       _airFareDataCollection
-          .add(AirFare(fare, color, 'Airways ' + id.toString()));
+          .add(AirFare(fare, color, 'Airways $id'));
     }
   }
 
@@ -176,8 +177,7 @@ class _AirFareCalendarCalendarState extends SampleViewState {
     final Random random = Random();
     final bool isToday = isSameDate(details.date, DateTime.now());
     final AirFare airFare = _airFareDataCollection[random.nextInt(100)];
-    final Color defaultColor = model.themeData != null &&
-            model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultColor = model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black54;
     final bool isBestPrice = airFare.fare == _kBestPrice;

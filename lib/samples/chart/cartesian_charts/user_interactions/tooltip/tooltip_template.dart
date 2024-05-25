@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -46,7 +47,7 @@ class _TooltipTemplateState extends SampleViewState {
                       child: Image.asset(_getImageTemplate(pointIndex)),
                     ),
                     Text(
-                      data.y.toString() + '%',
+                      '${data.y}%',
                       style: const TextStyle(fontSize: 12, color: Colors.black),
                       textScaler: TextScaler.noScaling,
                     ),

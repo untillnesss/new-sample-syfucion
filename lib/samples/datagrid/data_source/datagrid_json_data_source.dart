@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/material.dart';
 
 /// DataGrid import
@@ -12,7 +13,7 @@ import '../datagridsource/employee_datagridsource.dart';
 /// Renders column type data grid
 class JsonDataSourceDataGrid extends SampleView {
   /// Creates column type data grid
-  const JsonDataSourceDataGrid({Key? key}) : super(key: key);
+  const JsonDataSourceDataGrid({super.key});
 
   @override
   _JsonDataSourceDataGridState createState() => _JsonDataSourceDataGridState();

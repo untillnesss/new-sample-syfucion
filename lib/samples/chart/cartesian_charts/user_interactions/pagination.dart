@@ -206,7 +206,7 @@ class _PaginationState extends SampleViewState {
                   children: <Widget>[
                     Text(_days[i],
                         style: TextStyle(fontSize: 12, color: color)),
-                    _getContainer('images/' + _images[i]),
+                    _getContainer('images/${_images[i]}'),
                     Text(_temperatue[i],
                         style: TextStyle(fontSize: 12, color: color)),
                   ],
@@ -277,7 +277,7 @@ class _PaginationState extends SampleViewState {
       segmentedControlGroupValue = index;
       degree = _degrees[index];
       day = _daysWithTime[index];
-      _imageName = 'images/' + _images[index];
+      _imageName = 'images/${_images[index]}';
     });
   }
 

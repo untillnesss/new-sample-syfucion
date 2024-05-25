@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -362,12 +363,12 @@ class _HeaderAndFooterPdfState extends SampleViewState {
         PdfDestination(destPage, Offset(x, y)));
     annotation.border.width = 0;
     page.annotations.add(annotation);
-    String str = text + ' ';
+    String str = '$text ';
     final num value = isTitle
         ? font.measureString(text).width.round() + 20
         : font.measureString(text).width.round() + 40;
     for (num i = value; i < 470;) {
-      str = str + '.';
+      str = '$str.';
       i = i + 3.6140000000000003;
     }
     return PdfTextElement(text: str, font: font).draw(

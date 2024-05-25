@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:async';
 
 ///Package imports
@@ -128,7 +129,7 @@ class _ProgressBarSegmentStyleState extends SampleViewState {
               GaugeAnnotation(
                   angle: 90,
                   positionFactor: 0.1,
-                  widget: Text(progressValue.toStringAsFixed(0) + '%',
+                  widget: Text('${progressValue.toStringAsFixed(0)}%',
                       style: const TextStyle(
                           fontStyle: FontStyle.italic,
                           fontFamily: 'Times',
@@ -163,7 +164,7 @@ class _ProgressBarSegmentStyleState extends SampleViewState {
                   GaugeAnnotation(
                       angle: 90,
                       positionFactor: 0.25,
-                      widget: Text(progressValue.toStringAsFixed(0) + '%',
+                      widget: Text('${progressValue.toStringAsFixed(0)}%',
                           style: const TextStyle(
                               fontStyle: FontStyle.italic,
                               fontFamily: 'Times',
@@ -249,7 +250,7 @@ class _ProgressBarSegmentStyleState extends SampleViewState {
                 GaugeAnnotation(
                     angle: 90,
                     positionFactor: 0.25,
-                    widget: Text(progressValue.toStringAsFixed(0) + '%',
+                    widget: Text('${progressValue.toStringAsFixed(0)}%',
                         style: const TextStyle(
                             fontStyle: FontStyle.italic,
                             fontFamily: 'Times',

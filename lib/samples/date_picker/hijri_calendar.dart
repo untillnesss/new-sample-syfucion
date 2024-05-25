@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -144,8 +145,7 @@ class _HijriDatePickerState extends SampleViewState {
                   context)),
         ));
     return Scaffold(
-      backgroundColor: model.themeData == null ||
-              model.themeData.colorScheme.brightness == Brightness.light
+      backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
           ? null
           : const Color(0x00171a21),
       body: Column(children: <Widget>[
@@ -666,10 +666,8 @@ class _DateRangePickerOptionState extends State<_DateRangePickerOption> {
       _date = value;
     });
 
-    if (widget.selectionChanged != null) {
-      widget.selectionChanged(DateRangePickerSelectionChangedArgs(value));
+    widget.selectionChanged(DateRangePickerSelectionChangedArgs(value));
     }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -700,11 +698,7 @@ class _DateRangePickerOptionState extends State<_DateRangePickerOption> {
               }
             },
             child: Text(
-                _date.day.toString() +
-                    '-' +
-                    _date.month.toString() +
-                    '-' +
-                    _date.year.toString(),
+                '${_date.day}-${_date.month}-${_date.year}',
                 style: TextStyle(
                     fontSize: 15,
                     color: theme.textTheme.titleSmall?.color,

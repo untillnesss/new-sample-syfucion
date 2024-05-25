@@ -1,4 +1,5 @@
 /// Package import
+library;
 import 'dart:ui' as ui;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +143,7 @@ class _LineZoneState extends SampleViewState {
       trackballBehavior: _trackballBehavior,
       onTrackballPositionChanging: (TrackballArgs args) {
         args.chartPointInfo.label =
-            args.chartPointInfo.header! + ' : ' + args.chartPointInfo.label!;
+            '${args.chartPointInfo.header!} : ${args.chartPointInfo.label!}';
       },
 
       /// To set the annotation content for chart.

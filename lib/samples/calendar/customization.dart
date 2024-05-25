@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:math';
 
 ///Package imports
@@ -266,8 +267,7 @@ class _CustomizationCalendarState extends SampleViewState {
     if (meetingData is _Meeting) {
       meeting = meetingData;
     }
-    final Color textColor = model.themeData == null ||
-            model.themeData.colorScheme.brightness == Brightness.light
+    final Color textColor = model.themeData.colorScheme.brightness == Brightness.light
         ? Colors.black
         : Colors.white;
     if (_calendarController.view == CalendarView.timelineDay ||
@@ -371,7 +371,7 @@ class _CustomizationCalendarState extends SampleViewState {
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: Image(
                         image:
-                            ExactAssetImage('images/' + meeting.image + '.png'),
+                            ExactAssetImage('images/${meeting.image}.png'),
                         fit: BoxFit.contain,
                         width: details.bounds.width,
                         height: 60)),
@@ -476,15 +476,13 @@ class _CustomizationCalendarState extends SampleViewState {
 
     final String format =
         (meeting.to.difference(meeting.from).inHours < 24) ? 'HH:mm' : 'dd MMM';
-    final Color iconColor = model.themeData == null ||
-            model.themeData.colorScheme.brightness == Brightness.light
+    final Color iconColor = model.themeData.colorScheme.brightness == Brightness.light
         ? Colors.black87
         : Colors.white;
 
     return Container(
         padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-        color: model.themeData == null ||
-                model.themeData.colorScheme.brightness == Brightness.light
+        color: model.themeData.colorScheme.brightness == Brightness.light
             ? model.backgroundColor
             : model.homeCardColor,
         child: Row(
@@ -541,9 +539,7 @@ class _CustomizationCalendarState extends SampleViewState {
                       ],
                     ),
                     Text(
-                      DateFormat(format).format(meeting.from) +
-                          ' - ' +
-                          DateFormat(format).format(meeting.to),
+                      '${DateFormat(format).format(meeting.from)} - ${DateFormat(format).format(meeting.to)}',
                       style: TextStyle(
                         color: textColor.withOpacity(0.6),
                         fontFamily: 'Roboto',

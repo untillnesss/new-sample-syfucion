@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 

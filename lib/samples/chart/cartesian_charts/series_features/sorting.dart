@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -141,7 +142,7 @@ class _SortingDefaultState extends SampleViewState {
           const CategoryAxis(majorGridLines: MajorGridLines(width: 0)),
       onDataLabelRender: (DataLabelRenderArgs args) {
         args.text =
-            args.dataPoints[args.viewportPointIndex].y.toString() + ' m';
+            '${args.dataPoints[args.viewportPointIndex].y} m';
       },
       primaryYAxis: const NumericAxis(
           minimum: 500,

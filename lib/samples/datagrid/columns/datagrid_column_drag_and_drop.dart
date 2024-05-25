@@ -1,4 +1,5 @@
 /// Package imports
+library;
 
 // ignore_for_file: depend_on_referenced_packages
 
@@ -14,7 +15,7 @@ import '../datagridsource/product_datagridsource.dart';
 /// Renders column drag and drop data grid sample
 class DataGridColumnDragAndDrop extends SampleView {
   /// Creates column drag and drop data grid sample
-  const DataGridColumnDragAndDrop({Key? key}) : super(key: key);
+  const DataGridColumnDragAndDrop({super.key});
 
   @override
   _DataGridColumnDragAndDropState createState() =>

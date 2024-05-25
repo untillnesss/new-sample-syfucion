@@ -1,10 +1,11 @@
 ///Package import
+library;
 import 'package:flutter/material.dart';
 
 /// Collection of left, right or up, down icon buttons with text widget
 class CustomDirectionalButtons extends StatefulWidget {
   /// direction arrows surronding in text widget
-  const CustomDirectionalButtons({
+  const CustomDirectionalButtons({super.key, 
     double this.minValue = 0,
     required double this.maxValue,
     required double this.initialValue,
@@ -16,14 +17,7 @@ class CustomDirectionalButtons extends StatefulWidget {
     this.style,
     double this.padding = 0.0,
     Color this.iconColor = Colors.black,
-  })  : assert(minValue != null),
-        assert(maxValue != null),
-        assert(initialValue != null),
-        assert(onChanged != null),
-        assert(step != null),
-        assert(loop != null),
-        assert(padding != null),
-        assert(iconColor != null);
+  });
   // assert(initialValue >= minValue && initialValue <= maxValue),
   // assert(minValue < maxValue);
 

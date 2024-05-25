@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:async';
 import 'dart:math' as math;
 
@@ -122,7 +123,7 @@ class RealTimeUpdateDataGridSource extends DataGridSource {
                 SizedBox(
                   width: 50,
                   child: Text(
-                    '   ' + stack.toString(),
+                    '   $stack',
                   ),
                 )
               ]

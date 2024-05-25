@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // ignore: depend_on_referenced_packages
@@ -148,7 +149,7 @@ class _CertificatePdfState extends SampleViewState {
     page.graphics.drawString(_courceNameController.text, controlFont,
         bounds: Rect.fromLTWH(x, 340, 0, 0),
         brush: PdfSolidBrush(PdfColor(20, 58, 86)));
-    final String dateText = 'on ' + _dateController.text;
+    final String dateText = 'on ${_dateController.text}';
     x = _calculateXPosition(dateText, dateFont, pageSize.width);
     page.graphics.drawString(dateText, dateFont,
         bounds: Rect.fromLTWH(x, 385, 0, 0),

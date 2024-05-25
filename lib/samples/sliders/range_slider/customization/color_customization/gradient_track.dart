@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'package:flutter/material.dart';
 
 ///Core theme import

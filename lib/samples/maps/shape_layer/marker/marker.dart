@@ -1,4 +1,5 @@
 ///Dart import
+library;
 import 'dart:async';
 
 ///Flutter package imports
@@ -163,8 +164,7 @@ class _MapMarkerPageState extends SampleViewState {
 }
 
 class _ClockWidget extends StatefulWidget {
-  const _ClockWidget({Key? key, required this.countryName, required this.date})
-      : super(key: key);
+  const _ClockWidget({required this.countryName, required this.date});
 
   final String countryName;
   final DateTime date;

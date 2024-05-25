@@ -1,4 +1,5 @@
 /// dart imports
+library;
 import 'dart:io' show Platform;
 
 /// Package imports
@@ -41,14 +42,12 @@ void onTapControlInMobile(BuildContext context, SampleModel model,
 void resetLocaleValue(SampleModel model, SubItem currentSample) {
   model.sampleDetail = currentSample;
 
-  if (currentSample != null &&
-      (currentSample.title!.toLowerCase().contains('rtl') ||
+  if ((currentSample.title!.toLowerCase().contains('rtl') ||
           currentSample.title!.toLowerCase().contains('directionality'))) {
     model.textDirection = TextDirection.rtl;
     model.locale = const Locale('ar', 'AE');
     model.isInitialRender = true;
-  } else if (currentSample != null &&
-      currentSample.title!.toLowerCase().contains('localization')) {
+  } else if (currentSample.title!.toLowerCase().contains('localization')) {
     model.textDirection = TextDirection.ltr;
     model.locale = const Locale('en', 'US');
     model.isInitialRender = true;
@@ -173,20 +172,20 @@ List<TextSpan> getTextSpan(String description, SampleModel model) {
         word = value[i];
       }
       if (overallText != null) {
-        overallText = overallText + ' ' + word;
+        overallText = '$overallText $word';
       } else {
         overallText = word;
       }
 
       if (highlightText != null) {
-        highlightText = highlightText + ' ' + word;
+        highlightText = '$highlightText $word';
       } else {
         highlightText = word;
       }
     } else if (!value[i].contains('<highlight>') &&
         !value[i].contains('<endHighlight>')) {
       if (overallText != null) {
-        overallText = overallText + ' ' + value[i];
+        overallText = '$overallText ${value[i]}';
       } else {
         overallText = value[i];
       }
@@ -253,7 +252,7 @@ List<TextSpan> getTextSpan(String description, SampleModel model) {
     } else {
       textSpans.add(
         TextSpan(
-          text: i == 0 ? list[i] : ' ' + list[i],
+          text: i == 0 ? list[i] : ' ${list[i]}',
           style: model.isWebFullView
               ? TextStyle(
                   color: model.textColor,
@@ -1469,7 +1468,7 @@ void showBottomPropertySettingsPanel(
 /// To show the sample description in the bottom sheet
 void showBottomInfo(BuildContext context, String information) {
   final SampleModel model = SampleModel.instance;
-  if (information != null && information != '') {
+  if (information != '') {
     List<TextSpan>? textSpans;
     TextSpan? textSpan;
     textSpans = getTextSpan(information, model);

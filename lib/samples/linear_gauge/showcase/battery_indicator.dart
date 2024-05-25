@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -175,7 +176,7 @@ class _BatteryIndicatorState extends SampleViewState {
               color: Colors.transparent,
               child: Center(
                 child: Text(
-                    'Charged: ' + _batteryPercentage.toStringAsFixed(0) + '%',
+                    'Charged: ${_batteryPercentage.toStringAsFixed(0)}%',
                     style: TextStyle(
                         fontSize:
                             (defaultTargetPlatform == TargetPlatform.macOS ||

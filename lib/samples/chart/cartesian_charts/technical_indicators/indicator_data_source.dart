@@ -1,4 +1,5 @@
 /// Local import
+library;
 import '../../../../model/sample_view.dart';
 
 /// Get the chart data

@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
@@ -163,34 +164,32 @@ class _ExportState extends SampleViewState {
 
   Future<void> _renderCircularImage() async {
     final List<int> bytes = await _readImageData();
-    if (bytes != null) {
-      final Directory documentDirectory =
-          await getApplicationDocumentsDirectory();
-      final String path = documentDirectory.path;
-      const String imageName = 'circularchart.png';
-      imageCache.clear();
-      final File file = File('$path/$imageName');
-      file.writeAsBytesSync(bytes);
-      if (!mounted) {
-        return;
-      }
-      await Navigator.of(context).push<dynamic>(
-        MaterialPageRoute<dynamic>(
-          builder: (BuildContext context) {
-            return Scaffold(
-              appBar: AppBar(),
-              body: Center(
-                child: Container(
-                  color: Colors.white,
-                  child: Image.file(file),
-                ),
-              ),
-            );
-          },
-        ),
-      );
+    final Directory documentDirectory =
+        await getApplicationDocumentsDirectory();
+    final String path = documentDirectory.path;
+    const String imageName = 'circularchart.png';
+    imageCache.clear();
+    final File file = File('$path/$imageName');
+    file.writeAsBytesSync(bytes);
+    if (!mounted) {
+      return;
     }
-  }
+    await Navigator.of(context).push<dynamic>(
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) {
+          return Scaffold(
+            appBar: AppBar(),
+            body: Center(
+              child: Container(
+                color: Colors.white,
+                child: Image.file(file),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+    }
 
   Future<void> _renderPdf() async {
     final PdfDocument document = PdfDocument();

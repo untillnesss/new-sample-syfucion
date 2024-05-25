@@ -15,7 +15,7 @@ import 'helper.dart';
 class FileExplorer extends StatefulWidget {
   /// Creates a File Explorer
   const FileExplorer(
-      {this.brightness, this.onDocumentTap, this.isRtlTab = false});
+      {super.key, this.brightness, this.onDocumentTap, this.isRtlTab = false});
 
   /// Brightness theme for the file explorer.
   final Brightness? brightness;
@@ -120,8 +120,8 @@ class SearchToolbar extends StatefulWidget {
     this.primaryColor,
     this.textDirection = TextDirection.ltr,
     this.languageCode = 'en',
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Indicates whether tooltip for the search toolbar items need to be shown or not.
   final bool canShowTooltip;
@@ -510,11 +510,11 @@ class SearchToolbarState extends State<SearchToolbar> {
 class ToolbarItem extends StatelessWidget {
   ///Creates a toolbar item
   const ToolbarItem({
-    Key? key,
+    super.key,
     this.height,
     this.width,
     @required this.child,
-  }) : super(key: key);
+  });
 
   /// Height of the toolbar item
   final double? height;
@@ -594,7 +594,7 @@ class SplitButton extends StatelessWidget {
 class TextSearchOverlay extends StatefulWidget {
   /// Constructor for TextSearchOverlay.
   const TextSearchOverlay({
-    Key? key,
+    super.key,
     this.controller,
     this.textSearchOverlayEntry,
     this.onClose,
@@ -602,7 +602,7 @@ class TextSearchOverlay extends StatefulWidget {
     this.primaryColor,
     this.textDirection = TextDirection.ltr,
     this.languageCode = 'en',
-  }) : super(key: key);
+  });
 
   /// An object that is used to control the [SfPdfViewer].
   final PdfViewerController? controller;
@@ -1324,7 +1324,6 @@ class _ColorPaletteState extends State<ColorPalette> {
     _selectedColor = widget.selectedColor;
     _sliderValue = widget.selectedOpacity ?? 1;
     _isDesktop = isDesktop &&
-        widget.model.isMobileResolution != null &&
         !widget.model.isMobileResolution;
     super.initState();
   }

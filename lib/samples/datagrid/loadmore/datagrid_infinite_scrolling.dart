@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/material.dart';
 
 /// DataGrid import
@@ -12,7 +13,7 @@ import '../datagridsource/orderinfo_datagridsource.dart';
 /// Renders Load More Infinite Scrolling Data Grid
 class LoadMoreInfiniteScrollingDataGrid extends SampleView {
   /// Creates Load More Infinite Scrolling Data Grid
-  const LoadMoreInfiniteScrollingDataGrid({Key? key}) : super(key: key);
+  const LoadMoreInfiniteScrollingDataGrid({super.key});
 
   @override
   _LoadMoreInfiniteScrollingDataGridState createState() =>

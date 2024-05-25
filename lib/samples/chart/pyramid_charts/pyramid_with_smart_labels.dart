@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -292,10 +293,7 @@ class _PyramidSmartLabelState extends SampleViewState {
       onTooltipRender: (TooltipArgs args) {
         final NumberFormat format = NumberFormat.decimalPattern();
         //ignore: noop_primitive_operations
-        args.text = args.dataPoints![args.pointIndex!.toInt()].x.toString() +
-            ' : ' +
-            //ignore: noop_primitive_operations
-            format.format(args.dataPoints![args.pointIndex!.toInt()].y);
+        args.text = '${args.dataPoints![args.pointIndex!.toInt()].x} : ${format.format(args.dataPoints![args.pointIndex!.toInt()].y)}';
       },
       title: ChartTitle(
           text: isCardView ? '' : 'Top 10 populated countries - 2019'),

@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode import
@@ -12,7 +13,7 @@ import 'datagridsource/product_datagridsource.dart';
 /// Renders datagrid with selection option(single/multiple and select/unselect)
 class FreezePanesDataGrid extends SampleView {
   /// Creates datagrid with selection option(single/multiple and select/unselect)
-  const FreezePanesDataGrid({Key? key}) : super(key: key);
+  const FreezePanesDataGrid({super.key});
 
   @override
   _FreezePanesDataGridPageState createState() =>

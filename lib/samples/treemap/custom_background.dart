@@ -554,9 +554,7 @@ class _TreemapCustomBackgroundSampleState extends SampleViewState {
           ),
           const SizedBox(height: 5),
           Text(
-            _topRioOlympicCountries[tile.indices[0]].medal! +
-                ' : ' +
-                tile.weight.round().toString(),
+            '${_topRioOlympicCountries[tile.indices[0]].medal!} : ${tile.weight.round()}',
             style: const TextStyle(color: Colors.white),
           ),
         ],

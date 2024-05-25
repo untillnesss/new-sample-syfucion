@@ -1,4 +1,5 @@
 /// Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ import '../../datagridsource/orderinfo_datagridsource.dart';
 /// render data grid widget
 class StylingDataGrid extends SampleView {
   /// Creates data grid widget
-  const StylingDataGrid({Key? key}) : super(key: key);
+  const StylingDataGrid({super.key});
 
   @override
   _StylingDataGridState createState() => _StylingDataGridState();

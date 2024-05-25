@@ -1,4 +1,5 @@
 ///Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 ///Core theme import
@@ -233,11 +234,9 @@ class _MapsWithDirectionalityState extends DirectionalitySampleViewState {
                                   ),
                                   children: <TextSpan>[
                                     TextSpan(
-                                        text: '\n€' +
-                                            _stateWiseGRPDetails[index]
+                                        text: '\n€${_stateWiseGRPDetails[index]
                                                 .grp
-                                                .toStringAsFixed(2) +
-                                            'B'),
+                                                .toStringAsFixed(2)}B'),
                                   ],
                                 ),
                               ),

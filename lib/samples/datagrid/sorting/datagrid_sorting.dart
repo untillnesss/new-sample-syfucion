@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/cupertino.dart';
 
 /// DataGrid import
@@ -11,7 +12,7 @@ import '../datagridsource/orderinfo_datagridsource.dart';
 /// Renders sorting data grid
 class SortingDataGrid extends SampleView {
   /// Creates sorting data grid
-  const SortingDataGrid({Key? key}) : super(key: key);
+  const SortingDataGrid({super.key});
 
   @override
   _SortingDataGridState createState() => _SortingDataGridState();

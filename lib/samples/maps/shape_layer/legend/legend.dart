@@ -1,4 +1,5 @@
 ///Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 ///Core theme import
@@ -415,14 +416,10 @@ class _MapLegendPageState extends SampleViewState {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Country : ' +
-                                  (_internetPriceForShapes[index].countryName ??
+                              'Country : ${_internetPriceForShapes[index].countryName ??
                                       _internetPriceForShapes[index]
-                                          .actualCountryName) +
-                                  '\nPrice : \$' +
-                                  _internetPriceForShapes[index]
-                                      .price
-                                      .toString(),
+                                          .actualCountryName}\nPrice : \$${_internetPriceForShapes[index]
+                                      .price}',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
@@ -440,15 +437,11 @@ class _MapLegendPageState extends SampleViewState {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Country : ' +
-                                  (_internetPriceForBubbles[index]
+                              'Country : ${_internetPriceForBubbles[index]
                                           .countryName ??
                                       _internetPriceForBubbles[index]
-                                          .actualCountryName) +
-                                  '\nPrice : \$' +
-                                  _internetPriceForBubbles[index]
-                                      .price
-                                      .toString(),
+                                          .actualCountryName}\nPrice : \$${_internetPriceForBubbles[index]
+                                      .price}',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!

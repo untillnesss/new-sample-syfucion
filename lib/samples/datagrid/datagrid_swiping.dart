@@ -1,4 +1,5 @@
 /// Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:collection/collection.dart';
@@ -17,7 +18,7 @@ import 'model/orderinfo.dart';
 /// Renders column type data grid
 class SwipingDataGrid extends SampleView {
   /// Creates column type data grid
-  const SwipingDataGrid({Key? key}) : super(key: key);
+  const SwipingDataGrid({super.key});
 
   @override
   _SwipingDataGridState createState() => _SwipingDataGridState();

@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:async';
 
 ///Package imports
@@ -162,7 +163,7 @@ class _ProgressBarCustomLabelsState extends SampleViewState {
                   positionFactor: 0.1,
                   angle: 90,
                   widget: Text(
-                    _value.toStringAsFixed(0) + ' / 100',
+                    '${_value.toStringAsFixed(0)} / 100',
                     style: const TextStyle(fontSize: 11),
                   ))
             ])
@@ -197,7 +198,7 @@ class _ProgressBarCustomLabelsState extends SampleViewState {
                   animationType: AnimationType.linear)
             ],
             annotations: <GaugeAnnotation>[
-              GaugeAnnotation(widget: Text(_value.toStringAsFixed(0) + '%'))
+              GaugeAnnotation(widget: Text('${_value.toStringAsFixed(0)}%'))
             ])
       ]),
     );

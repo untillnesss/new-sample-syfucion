@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/material.dart';
 
 /// Renders a given fixed size widget

@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'package:flutter/material.dart';
 
 ///calendar import
@@ -117,7 +118,7 @@ class _RadialSliderThumbState extends SampleViewState {
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(
                     positionFactor: 0.1,
-                    widget: Text(_progressValue1.toStringAsFixed(0) + '%'))
+                    widget: Text('${_progressValue1.toStringAsFixed(0)}%'))
               ]),
         ]));
   }
@@ -169,7 +170,7 @@ class _RadialSliderThumbState extends SampleViewState {
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(
                     positionFactor: 0.1,
-                    widget: Text(_progressValue2.toStringAsFixed(0) + '%'))
+                    widget: Text('${_progressValue2.toStringAsFixed(0)}%'))
               ]),
         ]));
   }
@@ -218,7 +219,7 @@ class _RadialSliderThumbState extends SampleViewState {
               annotations: <GaugeAnnotation>[
                 GaugeAnnotation(
                     positionFactor: 0.1,
-                    widget: Text(_progressValue3.toStringAsFixed(0) + '%'))
+                    widget: Text('${_progressValue3.toStringAsFixed(0)}%'))
               ]),
         ]));
   }

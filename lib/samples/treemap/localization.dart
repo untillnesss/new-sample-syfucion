@@ -246,7 +246,7 @@ class _TreemapLocalizationPageState extends LocalizationSampleViewState {
                       ),
                       const SizedBox(height: 5.0),
                       Text(
-                        tile.weight.toString() + 'M sq. km',
+                        '${tile.weight}M sq. km',
                         textDirection: TextDirection.ltr,
                         style: themeData.textTheme.bodySmall!.copyWith(
                           color: textColor,

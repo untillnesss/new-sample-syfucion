@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -45,15 +46,12 @@ class _WaterFallState extends SampleViewState {
           majorTickLines: const MajorTickLines(size: 0),
           axisLabelFormatter: (AxisLabelRenderDetails details) {
             return ChartAxisLabel(
-                (details.value ~/ 1000).toString() + 'B', null);
+                '${details.value ~/ 1000}B', null);
           }),
       series: _getWaterFallSeries(),
       tooltipBehavior: _tooltipBehavior,
       onTooltipRender: (TooltipArgs args) {
-        args.text = args.dataPoints![args.pointIndex!.toInt()].x.toString() +
-            ' : ' +
-            (args.dataPoints![args.pointIndex!.toInt()].y / 1000).toString() +
-            'B';
+        args.text = '${args.dataPoints![args.pointIndex!.toInt()].x} : ${args.dataPoints![args.pointIndex!.toInt()].y / 1000}B';
       },
       onDataLabelRender: (DataLabelRenderArgs dataLabelArgs) {
         if (dataLabelArgs.pointIndex == 0) {

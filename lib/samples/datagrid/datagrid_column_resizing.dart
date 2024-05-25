@@ -1,4 +1,5 @@
 /// Packages import
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ import 'datagridsource/product_datagridsource.dart';
 /// Renders column resizing data grid sample
 class ColumnResizingDataGrid extends SampleView {
   /// Creates column resizing data grid sample
-  const ColumnResizingDataGrid({Key? key}) : super(key: key);
+  const ColumnResizingDataGrid({super.key});
 
   @override
   _ColumnResizingDataGridState createState() => _ColumnResizingDataGridState();

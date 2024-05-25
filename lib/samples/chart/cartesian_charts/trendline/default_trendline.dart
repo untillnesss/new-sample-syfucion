@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -315,7 +316,7 @@ class _TrendLineDefaultState extends SampleViewState {
                     (_displayRSquare != null &&
                             _displayRSquare! &&
                             _type != TrendlineType.movingAverage)
-                        ? Text('R² = ' + _rSquare,
+                        ? Text('R² = $_rSquare',
                             style: TextStyle(color: model.textColor))
                         : const Text('')
                   ]),

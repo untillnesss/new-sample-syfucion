@@ -1,4 +1,5 @@
 /// package imports
+library;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -67,10 +68,9 @@ class _WebLayoutPageState extends State<WebLayoutPage> {
     sample = widget.subItem!;
 
     if (sample.parentIndex != null) {
-      orginText = sample.control!.title! +
+      orginText = '${sample.control!.title! +
           ' > ' +
-          sample.control!.subItems![sample.parentIndex!].title +
-          ' > ' +
+          sample.control!.subItems![sample.parentIndex!].title} > ' +
           sample.control!.subItems![sample.parentIndex!]
               .subItems[sample.childIndex].title;
     } else {
@@ -79,13 +79,10 @@ class _WebLayoutPageState extends State<WebLayoutPage> {
                   .subItems!
                   .length >
               1) {
-        orginText = sample.control!.title! +
-            ' > ' +
-            widget.subItem!.control!.subItems![sample.childIndex!].title +
-            ' > ' +
-            sample.title!;
+        orginText = '${'${sample.control!.title!} > ' +
+            widget.subItem!.control!.subItems![sample.childIndex!].title} > ${sample.title!}';
       } else {
-        orginText = sample.control!.title! + ' > ' + sample.title!;
+        orginText = '${sample.control!.title!} > ${sample.title!}';
       }
     }
 
@@ -226,24 +223,20 @@ class _WebLayoutPageState extends State<WebLayoutPage> {
     return IconButton(
       icon: const Icon(Icons.menu, color: Colors.white),
       onPressed: () {
-        if (outputContainer != null) {
-          final GlobalKey globalKey = outputContainer.key! as GlobalKey;
-          final SampleOutputContainerState outputContainerState =
-              globalKey.currentState! as SampleOutputContainerState;
-          if (outputContainerState
-              .outputScaffoldKey.currentState!.isEndDrawerOpen) {
-            Navigator.pop(context);
-          }
+        final GlobalKey globalKey = outputContainer.key! as GlobalKey;
+        final SampleOutputContainerState outputContainerState =
+            globalKey.currentState! as SampleOutputContainerState;
+        if (outputContainerState
+            .outputScaffoldKey.currentState!.isEndDrawerOpen) {
+          Navigator.pop(context);
         }
-        if (popup != null) {
-          final GlobalKey globalkey = popup.key! as GlobalKey;
-          final _PopupState popupState = globalkey.currentState! as _PopupState;
-          if (popupState.scaffoldKey.currentState != null &&
-              popupState.scaffoldKey.currentState!.isEndDrawerOpen) {
-            Navigator.pop(context);
-          }
+              final GlobalKey globalkey = popup.key! as GlobalKey;
+        final _PopupState popupState = globalkey.currentState! as _PopupState;
+        if (popupState.scaffoldKey.currentState != null &&
+            popupState.scaffoldKey.currentState!.isEndDrawerOpen) {
+          Navigator.pop(context);
         }
-        scaffoldKey.currentState!.openDrawer();
+              scaffoldKey.currentState!.openDrawer();
       },
     );
   }
@@ -256,25 +249,21 @@ class _WebLayoutPageState extends State<WebLayoutPage> {
       child: IconButton(
         icon: const Icon(Icons.settings, color: Colors.white),
         onPressed: () {
-          if (outputContainer != null) {
-            final GlobalKey globalKey = outputContainer.key! as GlobalKey;
-            final SampleOutputContainerState outputContainerState =
-                globalKey.currentState! as SampleOutputContainerState;
-            if (outputContainerState
-                .outputScaffoldKey.currentState!.isEndDrawerOpen) {
-              Navigator.pop(context);
-            }
+          final GlobalKey globalKey = outputContainer.key! as GlobalKey;
+          final SampleOutputContainerState outputContainerState =
+              globalKey.currentState! as SampleOutputContainerState;
+          if (outputContainerState
+              .outputScaffoldKey.currentState!.isEndDrawerOpen) {
+            Navigator.pop(context);
           }
-          if (popup != null) {
-            final GlobalKey globalkey = popup.key! as GlobalKey;
-            final _PopupState popupState =
-                globalkey.currentState! as _PopupState;
-            if (popupState.scaffoldKey.currentState != null &&
-                popupState.scaffoldKey.currentState!.isEndDrawerOpen) {
-              Navigator.pop(context);
-            }
+                  final GlobalKey globalkey = popup.key! as GlobalKey;
+          final _PopupState popupState =
+              globalkey.currentState! as _PopupState;
+          if (popupState.scaffoldKey.currentState != null &&
+              popupState.scaffoldKey.currentState!.isEndDrawerOpen) {
+            Navigator.pop(context);
           }
-          scaffoldKey.currentState!.openEndDrawer();
+                  scaffoldKey.currentState!.openEndDrawer();
         },
       ),
     );
@@ -531,8 +520,7 @@ class _SampleInputContainerState extends State<_SampleInputContainer> {
               }
 
               outputContainerState.orginText =
-                  widget.webLayoutPageState!.sample.control!.title! +
-                      ' > ' +
+                  '${widget.webLayoutPageState!.sample.control!.title!} > ' +
                       item.subItems![0].title!;
 
               widget.webLayoutPageState!.selectSample = item.title;
@@ -638,9 +626,7 @@ class _SampleInputContainerState extends State<_SampleInputContainer> {
             outputContainerState.sample = item;
             outputContainerState.needTabs = false;
             outputContainerState.orginText =
-                widget.webLayoutPageState!.sample.control!.title! +
-                    ' > ' +
-                    item.title!;
+                '${widget.webLayoutPageState!.sample.control!.title!} > ${item.title!}';
             if (model.currentSampleKey == null ||
                 model.currentSampleKey != item.key) {
               outputContainerState.refresh();
@@ -699,9 +685,7 @@ class _SampleInputContainerState extends State<_SampleInputContainer> {
                     outputContainerState.sample = list[i];
                     outputContainerState.needTabs = false;
                     outputContainerState.orginText =
-                        widget.webLayoutPageState!.sample.control!.title! +
-                            ' > ' +
-                            list[i].title!;
+                        '${widget.webLayoutPageState!.sample.control!.title!} > ${list[i].title!}';
                     widget.webLayoutPageState!.selectSample = list[i].title;
                     resetLocaleValue(model, outputContainerState.sample);
                     if (model.currentSampleKey == null ||
@@ -1135,7 +1119,7 @@ class SampleOutputContainerState extends State<_SampleOutputContainer> {
       alignment: Alignment.centerLeft,
       child: Text(
         (needTabs ?? false) && subItems.length != 1
-            ? orginText + ' > ' + sampleSubItem.title!
+            ? '$orginText > ${sampleSubItem.title!}'
             : orginText,
         style: TextStyle(
           color: model.textColor.withOpacity(0.65),
@@ -1153,7 +1137,7 @@ class SampleOutputContainerState extends State<_SampleOutputContainer> {
       //Space added for avoiding text hide issue of the
       //string having `infinite` word.
       child: Text(
-        sampleSubItem.title! + ' ',
+        '${sampleSubItem.title!} ',
         style: TextStyle(
           color: model.textColor,
           letterSpacing: 0.39,
@@ -1707,7 +1691,7 @@ class SampleOutputContainerState extends State<_SampleOutputContainer> {
       child: SingleChildScrollView(
         controller: _controller,
         key: PageStorageKey<String>(
-            (subItems.isNotEmpty ? subItems[0].title! : '') + 'tabscroll'),
+            '${subItems.isNotEmpty ? subItems[0].title! : ''}tabscroll'),
         scrollDirection: Axis.horizontal,
         child: Material(
           color: model.subSamplesTabBarColor,
@@ -2357,7 +2341,7 @@ class _TileContainerState extends State<_TileContainer> {
     final Color selectedColor = model.themeData.useMaterial3
         ? model.themeData.colorScheme.secondaryContainer
         : Colors.grey.withOpacity(0.2);
-    if (list != null && list.isNotEmpty) {
+    if (list.isNotEmpty) {
       for (int i = 0; i < list.length; i++) {
         final String status = statusTag(list[i]);
         bool isNeedSelect = false;
@@ -2400,11 +2384,7 @@ class _TileContainerState extends State<_TileContainer> {
                       final String prevBreadCrumbText =
                           outputContainerState.orginText;
                       outputContainerState.orginText =
-                          widget.webLayoutPageState!.sample.control!.title! +
-                              ' > ' +
-                              text +
-                              ' > ' +
-                              list[i].title!;
+                          '${widget.webLayoutPageState!.sample.control!.title!} > $text > ${list[i].title!}';
 
                       widget.webLayoutPageState!.selectSample = list[i].title;
                       widget.webLayoutPageState!.sample =
@@ -2459,7 +2439,7 @@ class _TileContainerState extends State<_TileContainer> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: (status != null && status != '')
+                              color: (status != '')
                                   ? (status == 'New'
                                       ? const Color.fromRGBO(55, 153, 30, 1)
                                       : const Color.fromRGBO(246, 117, 0, 1))
@@ -2478,7 +2458,7 @@ class _TileContainerState extends State<_TileContainer> {
                               ),
                             ),
                           ),
-                          if (status != null && status != '')
+                          if (status != '')
                             const Padding(padding: EdgeInsets.only(right: 5))
                           else
                             Container(),
@@ -2524,11 +2504,7 @@ class _TileContainerState extends State<_TileContainer> {
                         Navigator.pop(context);
                       }
                       outputContainerState.orginText =
-                          widget.webLayoutPageState!.sample.control!.title! +
-                              ' > ' +
-                              text +
-                              ' > ' +
-                              list[i].title!;
+                          '${widget.webLayoutPageState!.sample.control!.title!} > $text > ${list[i].title!}';
 
                       widget.webLayoutPageState!.selectSample = list[i].title;
                       widget.webLayoutPageState!.sample =
@@ -2581,7 +2557,7 @@ class _TileContainerState extends State<_TileContainer> {
                               ),
                             ),
                           ),
-                          if (status != null && status != '')
+                          if (status != '')
                             Container(
                               decoration: BoxDecoration(
                                 color: status == 'New'
@@ -2604,7 +2580,7 @@ class _TileContainerState extends State<_TileContainer> {
                             )
                           else
                             Container(),
-                          if (status != null && status != '')
+                          if (status != '')
                             const Padding(padding: EdgeInsets.only(right: 5))
                           else
                             Container(),

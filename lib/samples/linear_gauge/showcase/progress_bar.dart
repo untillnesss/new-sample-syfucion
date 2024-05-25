@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Gauge imports
@@ -75,7 +76,7 @@ class _ProgressBarState extends SampleViewState {
           child: Padding(
               padding: const EdgeInsets.all(30),
               child: Text(
-                progressvalue.toStringAsFixed(2) + '%',
+                '${progressvalue.toStringAsFixed(2)}%',
                 style: const TextStyle(fontSize: 14, color: Color(0xffFFFFFF)),
               ))),
     ]);

@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,8 +12,7 @@ import 'sample_view.dart';
 /// Renders the Mobile layout.
 class LayoutPage extends StatefulWidget {
   /// Holds the _category, model of the current selected control.
-  const LayoutPage({this.category, this.sampleModel, Key? key})
-      : super(key: key);
+  const LayoutPage({this.category, this.sampleModel, super.key});
 
   /// Holds the selected control's _category information.
   final WidgetCategory? category;

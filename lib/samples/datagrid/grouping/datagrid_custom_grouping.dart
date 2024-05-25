@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ import '../datagridsource/stockinfo_datagridsource.dart';
 /// Renders custom grouping data grid
 class CustomgroupingDataGrid extends SampleView {
   /// Creates custom grouping data grid
-  const CustomgroupingDataGrid({Key? key}) : super(key: key);
+  const CustomgroupingDataGrid({super.key});
 
   @override
   _CustomgroupingDataGridState createState() => _CustomgroupingDataGridState();

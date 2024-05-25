@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -136,13 +137,10 @@ class ChartMaximumLabelWidthState extends SampleViewState {
       title: ChartTitle(text: isCardView ? '' : "World's tallest buildings"),
       plotAreaBorderWidth: 0,
       onDataLabelRender: (DataLabelRenderArgs args) {
-        args.text = args.dataPoints[args.pointIndex].y.toString() + ' m';
+        args.text = '${args.dataPoints[args.pointIndex].y} m';
       },
       onTooltipRender: (TooltipArgs args) {
-        args.text = args.dataPoints![args.pointIndex!.toInt()].x.toString() +
-            ' : ' +
-            args.dataPoints![args.pointIndex!.toInt()].y.toString() +
-            ' m';
+        args.text = '${args.dataPoints![args.pointIndex!.toInt()].x} : ${args.dataPoints![args.pointIndex!.toInt()].y} m';
       },
       primaryXAxis: CategoryAxis(
           labelsExtent: _isEnableLabelExtend ? _xLabelsExtent : null,

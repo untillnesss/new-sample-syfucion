@@ -1646,9 +1646,7 @@ class _TreemapDrilldownSampleState extends SampleViewState
           child: Padding(
             padding: const EdgeInsets.all(4),
             child: Text(
-              'Population : ' +
-                  (tile.weight / pow(10, 6)).toStringAsFixed(2) +
-                  'B',
+              'Population : ${(tile.weight / pow(10, 6)).toStringAsFixed(2)}B',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: color,
@@ -1729,14 +1727,12 @@ class _TreemapDrilldownSampleState extends SampleViewState
                     ),
                 children: <TextSpan>[
                   TextSpan(
-                    text: '\n' +
-                        ((_levels.indexOf(tile.level) == 1
+                    text: '\n${((_levels.indexOf(tile.level) == 1
                                     ? tile.weight
                                     : _worldPopulationDetails[tile.indices[0]]
                                         .populationInThousands) /
                                 pow(10, 3))
-                            .toStringAsFixed(2) +
-                        'M',
+                            .toStringAsFixed(2)}M',
                   ),
                 ],
               ),

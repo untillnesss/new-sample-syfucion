@@ -1,4 +1,5 @@
 /// Dart imports
+library;
 import 'dart:async';
 import 'dart:math';
 
@@ -102,13 +103,11 @@ class _LiveUpdateState extends SampleViewState {
 
   ///Update the data points
   void _updateData(Timer timer) {
-    if (isCardView != null) {
-      chartData = _getChartData();
-      _chartSeriesController?.updateDataSource(
-        addedDataIndexes: <int>[chartData!.length - 1],
-      );
+    chartData = _getChartData();
+    _chartSeriesController?.updateDataSource(
+      addedDataIndexes: <int>[chartData!.length - 1],
+    );
     }
-  }
 
   ///Get random value
   int _getRandomInt(int min, int max) {

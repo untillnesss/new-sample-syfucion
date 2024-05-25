@@ -1,4 +1,5 @@
 /// Package import
+library;
 import 'package:flutter/material.dart';
 
 /// DataGrid import
@@ -12,7 +13,7 @@ import '../datagridsource/orderinfo_datagridsource.dart';
 /// Renders Load more data grid
 class LoadMoreDataGrid extends SampleView {
   /// Creates Load more data grid
-  const LoadMoreDataGrid({Key? key}) : super(key: key);
+  const LoadMoreDataGrid({super.key});
 
   @override
   _LoadMoreDataGridState createState() => _LoadMoreDataGridState();
@@ -100,7 +101,6 @@ class _LoadMoreDataGridState extends SampleViewState {
                         // Need to check whether the widget is available or not
                         // in the current widget tree.
                         context.renderObject != null &&
-                        context.state != null &&
                         context.state.mounted) {
                       setState(() {
                         showIndicator = true;
@@ -118,7 +118,6 @@ class _LoadMoreDataGridState extends SampleViewState {
                         // Need to check whether the widget is available or not
                         // in the current widget tree.
                         context.renderObject != null &&
-                        context.state != null &&
                         context.state.mounted) {
                       setState(() {
                         showIndicator = false;

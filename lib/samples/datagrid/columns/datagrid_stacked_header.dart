@@ -1,4 +1,5 @@
 /// Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ import '../datagridsource/product_datagridsource.dart';
 /// Renders stacked header data grid
 class StackedHeaderDataGrid extends SampleView {
   /// Creates stacked header data grid
-  const StackedHeaderDataGrid({Key? key}) : super(key: key);
+  const StackedHeaderDataGrid({super.key});
 
   @override
   _StackedHeaderDataGridState createState() => _StackedHeaderDataGridState();

@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode imports
@@ -12,7 +13,7 @@ import '../datagridsource/customer_datagridsource.dart';
 /// Renders column type data grid
 class ColumnTypeDataGrid extends SampleView {
   /// Creates column type data grid
-  const ColumnTypeDataGrid({Key? key}) : super(key: key);
+  const ColumnTypeDataGrid({super.key});
 
   @override
   _ColumnTypesDataGridState createState() => _ColumnTypesDataGridState();

@@ -1,4 +1,5 @@
 ///Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -213,10 +214,8 @@ class _DefaultRangeSelectorPageState extends SampleViewState {
               child: SizedBox(
                 height: 25,
                 child: Text(
-                  'Average rate   :   ' +
-                      _getAverageInflationRate(rangeController)
-                          .toStringAsFixed(2) +
-                      '%',
+                  'Average rate   :   ${_getAverageInflationRate(rangeController)
+                          .toStringAsFixed(2)}%',
                   style: const TextStyle(fontSize: 18),
                 ),
               ),

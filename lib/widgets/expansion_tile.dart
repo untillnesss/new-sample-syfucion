@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/material.dart';
 
 const Duration _kExpand = Duration(milliseconds: 200);
@@ -7,17 +8,14 @@ const Duration _kExpand = Duration(milliseconds: 200);
 class CustomExpansionTile extends StatefulWidget {
   /// holds the title, children, et., of the expansionTile
   const CustomExpansionTile({
-    Key? key,
+    super.key,
     this.headerBackgroundColor,
     required Widget this.title,
     this.backgroundColor,
     this.onExpansionChanged,
     List<Widget> this.children = const <Widget>[],
     bool this.initiallyExpanded = false,
-  })  : assert(initiallyExpanded != null),
-        assert(title != null),
-        assert(children != null),
-        super(key: key);
+  });
 
   /// Holds the header name of expansion tile
   final Widget? title;

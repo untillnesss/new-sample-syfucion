@@ -569,11 +569,8 @@ class _TreemapRangeColorMappingSampleState extends SampleViewState {
                             : const Color.fromRGBO(10, 10, 10, 1),
                       )),
                   TextSpan(
-                    text: '\nWon percentage : ' +
-                        _stateWiseElectionResult[tile.indices[0]]
-                            .percentage
-                            .toString() +
-                        '%',
+                    text: '\nWon percentage : ${_stateWiseElectionResult[tile.indices[0]]
+                            .percentage}%',
                     style: themeData.textTheme.bodySmall!.copyWith(
                       color: _isLightTheme
                           ? const Color.fromRGBO(255, 255, 255, 1)

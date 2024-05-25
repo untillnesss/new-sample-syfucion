@@ -1,4 +1,5 @@
 ///Package import
+library;
 import 'package:flutter/material.dart';
 
 ///Date picker imports
@@ -105,8 +106,7 @@ class _VerticalCalendarPickerState extends SampleViewState {
             ? ListView(children: <Widget>[calendar])
             : calendar);
     return Scaffold(
-        backgroundColor: model.themeData == null ||
-                model.themeData.colorScheme.brightness == Brightness.light
+        backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
             ? null
             : const Color(0x00171a21),
         body: Column(children: <Widget>[

@@ -233,7 +233,7 @@ class _TreemapTextDirectionPageState extends DirectionalitySampleViewState {
                         children: <TextSpan>[
                           TextSpan(
                               text:
-                                  '\n€' + tile.weight.toStringAsFixed(2) + 'B'),
+                                  '\n€${tile.weight.toStringAsFixed(2)}B'),
                         ],
                       ),
                     ),

@@ -310,12 +310,12 @@ typedef ExpandableButtonWidgetBuilder = _ExpandedButton Function(
 class ExpandableAnimatedButton extends StatefulWidget {
   /// Creates the expandable animated button
   const ExpandableAnimatedButton({
-    Key? key,
+    super.key,
     required this.dataCount,
     required this.builder,
     this.spacing = 10.0,
     this.alignment = Alignment.bottomRight,
-  }) : super(key: key);
+  });
 
   /// Data count value
   final int dataCount;
@@ -366,8 +366,7 @@ class _ExpandableAnimatedButtonState extends State<ExpandableAnimatedButton> {
 
 class _InheritedExpandableAnimatedButton extends InheritedWidget {
   const _InheritedExpandableAnimatedButton(
-      {required Widget child, required this.alignment})
-      : super(child: child);
+      {required super.child, required this.alignment});
 
   final WrapCrossAlignment alignment;
 

@@ -1,4 +1,5 @@
 ///Package imports
+library;
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
@@ -114,8 +115,7 @@ class _InvoicePdfState extends SampleViewState {
             lineAlignment: PdfVerticalAlignment.bottom));
     //Create data foramt and convert it to text.
     final DateFormat format = DateFormat.yMMMMd('en_US');
-    final String invoiceNumber = 'Invoice Number: 2058557939\r\n\r\nDate: ' +
-        format.format(DateTime.now());
+    final String invoiceNumber = 'Invoice Number: 2058557939\r\n\r\nDate: ${format.format(DateTime.now())}';
     final Size contentSize = contentFont.measureString(invoiceNumber);
     const String address =
         'Bill To: \r\n\r\nAbraham Swearegin, \r\n\r\nUnited States, California, San Mateo, \r\n\r\n9920 BridgePointe Parkway, \r\n\r\n9365550136';

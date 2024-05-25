@@ -1,6 +1,8 @@
 // import 'dart:async';
 
 /// Package import
+library;
+
 import 'package:flutter/material.dart';
 
 /// Chart import

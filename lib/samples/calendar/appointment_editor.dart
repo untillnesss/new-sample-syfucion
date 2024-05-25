@@ -1,4 +1,5 @@
 ///Dart imports
+library;
 import 'dart:core';
 import 'dart:math';
 
@@ -297,8 +298,7 @@ class _CalendarAppointmentEditorState extends SampleViewState {
                             data: model.themeData,
                             child: Card(
                               margin: EdgeInsets.zero,
-                              color: model.themeData != null &&
-                                      model.themeData.colorScheme.brightness ==
+                              color: model.themeData.colorScheme.brightness ==
                                           Brightness.dark
                                   ? Colors.grey[850]
                                   : Colors.white,
@@ -579,9 +579,7 @@ String _getAppointmentTimeText(Appointment selectedAppointment) {
         selectedAppointment.startTime, selectedAppointment.endTime)) {
       return DateFormat('EEEE, MMM dd').format(selectedAppointment.startTime);
     }
-    return DateFormat('EEEE, MMM dd').format(selectedAppointment.startTime) +
-        ' - ' +
-        DateFormat('EEEE, MMM dd').format(selectedAppointment.endTime);
+    return '${DateFormat('EEEE, MMM dd').format(selectedAppointment.startTime)} - ${DateFormat('EEEE, MMM dd').format(selectedAppointment.endTime)}';
   } else if (selectedAppointment.startTime.day !=
           selectedAppointment.endTime.day ||
       selectedAppointment.startTime.month !=
@@ -594,15 +592,11 @@ String _getAppointmentTimeText(Appointment selectedAppointment) {
     }
 
     endFormat += ' dd hh:mm a';
-    return DateFormat('EEEE, MMM dd hh:mm a')
-            .format(selectedAppointment.startTime) +
-        ' - ' +
-        DateFormat(endFormat).format(selectedAppointment.endTime);
+    return '${DateFormat('EEEE, MMM dd hh:mm a')
+            .format(selectedAppointment.startTime)} - ${DateFormat(endFormat).format(selectedAppointment.endTime)}';
   } else {
-    return DateFormat('EEEE, MMM dd hh:mm a')
-            .format(selectedAppointment.startTime) +
-        ' - ' +
-        DateFormat('hh:mm a').format(selectedAppointment.endTime);
+    return '${DateFormat('EEEE, MMM dd hh:mm a')
+            .format(selectedAppointment.startTime)} - ${DateFormat('hh:mm a').format(selectedAppointment.endTime)}';
   }
 }
 
@@ -614,13 +608,11 @@ Widget _editExceptionSeries(
     Appointment selectedAppointment,
     Appointment recurrenceAppointment,
     CalendarDataSource events) {
-  final Color defaultColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black54;
 
-  final Color defaultTextColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultTextColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black87;
 
@@ -759,13 +751,11 @@ Widget _editExceptionSeries(
 /// delete the entire series.
 Widget _deleteRecurrence(BuildContext context, SampleModel model,
     Appointment selectedAppointment, CalendarDataSource events) {
-  final Color defaultColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black54;
 
-  final Color defaultTextColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultTextColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black87;
 
@@ -916,13 +906,11 @@ Widget _editRecurrence(
     CalendarDataSource events,
     List<String> timeZoneCollection,
     List<DateTime> visibleDates) {
-  final Color defaultColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black54;
 
-  final Color defaultTextColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultTextColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black87;
 
@@ -1073,13 +1061,11 @@ Widget displayAppointmentDetails(
     CalendarDataSource events,
     List<String> timeZoneCollection,
     List<DateTime> visibleDates) {
-  final Color defaultColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black54;
 
-  final Color defaultTextColor = model.themeData != null &&
-          model.themeData.colorScheme.brightness == Brightness.dark
+  final Color defaultTextColor = model.themeData.colorScheme.brightness == Brightness.dark
       ? Colors.white
       : Colors.black87;
 
@@ -1234,7 +1220,7 @@ String _getSelectedResourceText(
         .firstWhere(
             (CalendarResource resource) => resource.id == resourceIds[i])
         .displayName;
-    resourceNames = resourceNames == null ? name : resourceNames + ', ' + name;
+    resourceNames = resourceNames == null ? name : '$resourceNames, $name';
   }
 
   return resourceNames!;
@@ -1478,7 +1464,7 @@ class PopUpAppointmentEditor extends StatefulWidget {
       this.colorNames,
       this.selectedAppointment,
       this.timeZoneCollection,
-      this.visibleDates);
+      this.visibleDates, {super.key});
 
   /// Model of appointment editor
   final SampleModel model;
@@ -1571,13 +1557,11 @@ class _PopUpAppointmentEditorState extends State<PopUpAppointmentEditor> {
 
   @override
   Widget build(BuildContext context) {
-    final Color defaultColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black54;
 
-    final Color defaultTextColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultTextColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black87;
 
@@ -2124,7 +2108,7 @@ class _PopUpAppointmentEditorState extends State<PopUpAppointmentEditor> {
   /// Return the resource editor to edit the resource collection for an
   /// appointment
   Widget _getResourceEditor(TextStyle hintTextStyle) {
-    if (_selectedResources == null || _selectedResources.isEmpty) {
+    if (_selectedResources.isEmpty) {
       return Text('Add people', style: hintTextStyle);
     }
 
@@ -2496,12 +2480,10 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
       _dayOfWeekText = _weekDay[_dayOfWeek - 1];
       _recurrenceProperties!.week = _weekNumber;
       _recurrenceProperties!.dayOfWeek = _dayOfWeek;
-      _monthIconColor = widget.model.themeData != null &&
-              widget.model.themeData.colorScheme.brightness == Brightness.dark
+      _monthIconColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
           ? Colors.white
           : Colors.black54;
-      _lastDayIconColor = widget.model.themeData != null &&
-              widget.model.themeData.colorScheme.brightness == Brightness.dark
+      _lastDayIconColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
           ? Colors.white
           : Colors.black54;
       _weekIconColor = widget.model.primaryColor;
@@ -2516,12 +2498,10 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
       _recurrenceProperties!.dayOfWeek = 0;
       _recurrenceProperties!.week = 0;
       _recurrenceProperties!.dayOfMonth = _dayOfMonth;
-      _weekIconColor = widget.model.themeData != null &&
-              widget.model.themeData.colorScheme.brightness == Brightness.dark
+      _weekIconColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
           ? Colors.white
           : Colors.black54;
-      _lastDayIconColor = widget.model.themeData != null &&
-              widget.model.themeData.colorScheme.brightness == Brightness.dark
+      _lastDayIconColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
           ? Colors.white
           : Colors.black54;
       _monthIconColor = widget.model.primaryColor;
@@ -2536,12 +2516,10 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
       _recurrenceProperties!.dayOfWeek = 0;
       _recurrenceProperties!.week = 0;
       _recurrenceProperties!.dayOfMonth = -1;
-      _monthIconColor = widget.model.themeData != null &&
-              widget.model.themeData.colorScheme.brightness == Brightness.dark
+      _monthIconColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
           ? Colors.white
           : Colors.black54;
-      _weekIconColor = widget.model.themeData != null &&
-              widget.model.themeData.colorScheme.brightness == Brightness.dark
+      _weekIconColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
           ? Colors.white
           : Colors.black54;
       _lastDayIconColor = widget.model.primaryColor;
@@ -2728,22 +2706,18 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
 
   @override
   Widget build(BuildContext context) {
-    final Color defaultColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black54;
 
-    final Color defaultTextColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultTextColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black87;
 
-    final Color defaultButtonColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultButtonColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white10
         : Colors.white;
-    final Color borderColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color borderColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.transparent;
 
@@ -2753,8 +2727,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
         width: 600,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(4)),
-          color: widget.model.themeData != null &&
-                  widget.model.themeData.colorScheme.brightness ==
+          color: widget.model.themeData.colorScheme.brightness ==
                       Brightness.dark
               ? Colors.grey[850]
               : Colors.white,
@@ -2786,8 +2759,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                       margin: const EdgeInsets.symmetric(vertical: 3),
                       child: ListTile(
                         title: Text(
-                          widget.selectedAppointment != null &&
-                                  widget.newAppointment == null
+                          widget.newAppointment == null
                               ? 'Edit appointment'
                               : 'New appointment',
                           style: TextStyle(
@@ -3602,16 +3574,14 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                           cursorColor:
                                               widget.model.primaryColor,
                                           onChanged: (String value) {
-                                            if (value != null &&
-                                                value.isNotEmpty) {
+                                            if (value.isNotEmpty) {
                                               _interval = int.parse(value);
                                               if (_interval == 0) {
                                                 _interval = 1;
                                               } else if (_interval! >= 999) {
                                                 _interval = 999;
                                               }
-                                            } else if (value.isEmpty ||
-                                                value == null) {
+                                            } else if (value.isEmpty) {
                                               _interval = 1;
                                             }
                                             _recurrenceProperties!.interval =
@@ -3699,7 +3669,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                           Expanded(
                               child: Container(
                                   padding: const EdgeInsets.only(top: 15),
-                                  child: Text('  ' + _ruleType,
+                                  child: Text('  $_ruleType',
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: defaultTextColor,
@@ -4228,8 +4198,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                                     cursorColor: widget
                                                         .model.primaryColor,
                                                     onChanged: (String value) {
-                                                      if (value != null &&
-                                                          value.isNotEmpty) {
+                                                      if (value.isNotEmpty) {
                                                         _dayOfMonth =
                                                             int.parse(value);
                                                         if (_dayOfMonth <= 1) {
@@ -4251,10 +4220,6 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                                               .dayOfMonth =
                                                           _dayOfMonth;
                                                       _weekIconColor = widget
-                                                                      .model
-                                                                      .themeData !=
-                                                                  null &&
-                                                              widget
                                                                       .model
                                                                       .themeData
                                                                       .brightness ==
@@ -4495,9 +4460,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                                                   .primaryColor,
                                                               onChanged: (String
                                                                   value) async {
-                                                                if (value !=
-                                                                        null &&
-                                                                    value
+                                                                if (value
                                                                         .isNotEmpty) {
                                                                   _count =
                                                                       int.parse(
@@ -4520,9 +4483,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                                                           .recurrenceCount =
                                                                       _count!;
                                                                 } else if (value
-                                                                        .isEmpty ||
-                                                                    value ==
-                                                                        null) {
+                                                                        .isEmpty) {
                                                                   _noEndDateRange();
                                                                 }
                                                               },
@@ -4799,14 +4760,14 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                                   .length))),
                                   cursorColor: widget.model.primaryColor,
                                   onChanged: (String value) {
-                                    if (value != null && value.isNotEmpty) {
+                                    if (value.isNotEmpty) {
                                       _dayOfMonth = int.parse(value);
                                       if (_dayOfMonth == 0) {
                                         _dayOfMonth = _startDate.day;
                                       } else if (_dayOfMonth >= 31) {
                                         _dayOfMonth = 31;
                                       }
-                                    } else if (value.isEmpty || value == null) {
+                                    } else if (value.isEmpty) {
                                       _dayOfMonth = _startDate.day;
                                     }
                                     _recurrenceProperties!.dayOfWeek = 0;
@@ -4814,8 +4775,7 @@ class _AppointmentEditorWebState extends State<AppointmentEditorWeb> {
                                     _recurrenceProperties!.dayOfMonth =
                                         _dayOfMonth;
                                     _weekIconColor =
-                                        widget.model.themeData != null &&
-                                                widget
+                                        widget
                                                         .model
                                                         .themeData
                                                         .colorScheme
@@ -6282,8 +6242,7 @@ class _AppointmentEditorState extends State<AppointmentEditor> {
     return Theme(
         data: widget.model.themeData,
         child: Scaffold(
-            backgroundColor: widget.model.themeData != null &&
-                    widget.model.themeData.colorScheme.brightness ==
+            backgroundColor: widget.model.themeData.colorScheme.brightness ==
                         Brightness.dark
                 ? Colors.grey[850]
                 : Colors.white,
@@ -6445,8 +6404,7 @@ class _AppointmentEditorState extends State<AppointmentEditor> {
                               Brightness.dark
                           ? Colors.grey[850]
                           : Colors.white)!,
-                      widget.model.themeData.colorScheme.brightness != null &&
-                              widget.model.themeData.colorScheme.brightness ==
+                      widget.model.themeData.colorScheme.brightness ==
                                   Brightness.dark
                           ? Colors.white
                           : Colors.black87)
@@ -6496,7 +6454,7 @@ class _AppointmentEditorState extends State<AppointmentEditor> {
   /// Return the resource editor to edit the resource collection for an
   /// appointment
   Widget _getResourceEditor(TextStyle hintTextStyle) {
-    if (_selectedResources == null || _selectedResources.isEmpty) {
+    if (_selectedResources.isEmpty) {
       return Text('Add people', style: hintTextStyle);
     }
 
@@ -6876,8 +6834,7 @@ class _DeleteDialogState extends State<_DeleteDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final Color defaultTextColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultTextColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black87;
     return SimpleDialog(
@@ -7052,8 +7009,7 @@ class _EditDialogState extends State<_EditDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final Color defaultTextColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultTextColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black87;
     return SimpleDialog(
@@ -7333,13 +7289,11 @@ class _CustomRuleState extends State<_CustomRule> {
     _selectedRecurrenceType = _selectedRecurrenceType ?? 'day';
     _dayOfMonth = _startDate.day;
     _dayOfWeek = _startDate.weekday;
-    _monthlyRule = 'Monthly on day ' + _startDate.day.toString() + 'th';
+    _monthlyRule = 'Monthly on day ${_startDate.day}th';
     _endRule = _EndRule.never;
     _month = _startDate.month;
     _weekNumber = _getWeekNumber(_startDate);
-    _weekNumberDay = _weekDayPosition[_weekNumber == -1 ? 4 : _weekNumber - 1] +
-        ' ' +
-        _weekDay[_dayOfWeek - 1];
+    _weekNumberDay = '${_weekDayPosition[_weekNumber == -1 ? 4 : _weekNumber - 1]} ${_weekDay[_dayOfWeek - 1]}';
     if (_days == null) {
       _mobileInitialWeekdays(_startDate.weekday);
     }
@@ -7488,7 +7442,7 @@ class _CustomRuleState extends State<_CustomRule> {
 
   void _monthlyWeek() {
     setState(() {
-      _monthlyRule = 'Monthly on the ' + _weekNumberDay!;
+      _monthlyRule = 'Monthly on the ${_weekNumberDay!}';
       _recurrenceProperties!.week = _weekNumber;
       _recurrenceProperties!.dayOfWeek = _dayOfWeek;
     });
@@ -7496,7 +7450,7 @@ class _CustomRuleState extends State<_CustomRule> {
 
   void _monthlyDay() {
     setState(() {
-      _monthlyRule = 'Monthly on day ' + _startDate.day.toString() + 'th';
+      _monthlyRule = 'Monthly on day ${_startDate.day}th';
       _recurrenceProperties!.dayOfWeek = 0;
       _recurrenceProperties!.week = 0;
       _recurrenceProperties!.dayOfMonth = _dayOfMonth;
@@ -7628,12 +7582,10 @@ class _CustomRuleState extends State<_CustomRule> {
 
   Widget _getCustomRule(
       BuildContext context, Color backgroundColor, Color defaultColor) {
-    final Color defaultTextColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultTextColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white
         : Colors.black87;
-    final Color defaultButtonColor = widget.model.themeData != null &&
-            widget.model.themeData.colorScheme.brightness == Brightness.dark
+    final Color defaultButtonColor = widget.model.themeData.colorScheme.brightness == Brightness.dark
         ? Colors.white10
         : Colors.white;
     return Container(
@@ -7669,7 +7621,7 @@ class _CustomRuleState extends State<_CustomRule> {
                                   offset: _interval.toString().length))),
                       cursorColor: widget.model.primaryColor,
                       onChanged: (String value) {
-                        if (value != null && value.isNotEmpty) {
+                        if (value.isNotEmpty) {
                           _interval = int.parse(value);
                           if (_interval == 0) {
                             _interval = 1;
@@ -7678,7 +7630,7 @@ class _CustomRuleState extends State<_CustomRule> {
                               _interval = 999;
                             });
                           }
-                        } else if (value.isEmpty || value == null) {
+                        } else if (value.isEmpty) {
                           _interval = 1;
                         }
                         _recurrenceProperties!.interval = _interval!;
@@ -7955,16 +7907,12 @@ class _CustomRuleState extends State<_CustomRule> {
                         value: _monthlyRule,
                         items: <DropdownMenuItem<String>>[
                           DropdownMenuItem<String>(
-                            value: 'Monthly on day ' +
-                                _startDate.day.toString() +
-                                'th',
-                            child: Text('Monthly on day ' +
-                                _startDate.day.toString() +
-                                'th'),
+                            value: 'Monthly on day ${_startDate.day}th',
+                            child: Text('Monthly on day ${_startDate.day}th'),
                           ),
                           DropdownMenuItem<String>(
-                            value: 'Monthly on the ' + _weekNumberDay!,
-                            child: Text('Monthly on the ' + _weekNumberDay!),
+                            value: 'Monthly on the ${_weekNumberDay!}',
+                            child: Text('Monthly on the ${_weekNumberDay!}'),
                           ),
                           const DropdownMenuItem<String>(
                             value: 'Last day of month',
@@ -7974,17 +7922,13 @@ class _CustomRuleState extends State<_CustomRule> {
                         onChanged: (String? value) {
                           setState(() {
                             if (value ==
-                                'Monthly on day ' +
-                                    _startDate.day.toString() +
-                                    'th') {
-                              _width = _textSize('Monthly on day ' +
-                                  _startDate.day.toString() +
-                                  'th');
+                                'Monthly on day ${_startDate.day}th') {
+                              _width = _textSize('Monthly on day ${_startDate.day}th');
                               _monthlyDay();
                             } else if (value ==
-                                'Monthly on the ' + _weekNumberDay!) {
+                                'Monthly on the ${_weekNumberDay!}') {
                               _width = _textSize(
-                                  'Monthly on the ' + _weekNumberDay!);
+                                  'Monthly on the ${_weekNumberDay!}');
                               _monthlyWeek();
                             } else if (value == 'Last day of month') {
                               _width = _textSize('Last day of month');
@@ -8173,7 +8117,7 @@ class _CustomRuleState extends State<_CustomRule> {
                               });
                             },
                             onChanged: (String value) async {
-                              if (value != null && value.isNotEmpty) {
+                              if (value.isNotEmpty) {
                                 _count = int.parse(value);
                                 if (_count == 0) {
                                   _count = 1;
@@ -8182,7 +8126,7 @@ class _CustomRuleState extends State<_CustomRule> {
                                     _count = 999;
                                   });
                                 }
-                              } else if (value.isEmpty || value == null) {
+                              } else if (value.isEmpty) {
                                 _count = 1;
                               }
                               _endRule = _EndRule.count;
@@ -8234,8 +8178,7 @@ class _CustomRuleState extends State<_CustomRule> {
     return Theme(
         data: widget.model.themeData,
         child: Scaffold(
-          backgroundColor: widget.model.themeData != null &&
-                  widget.model.themeData.colorScheme.brightness ==
+          backgroundColor: widget.model.themeData.colorScheme.brightness ==
                       Brightness.dark
               ? Colors.grey[850]
               : Colors.white,
@@ -8273,8 +8216,7 @@ class _CustomRuleState extends State<_CustomRule> {
                             Brightness.dark
                         ? Colors.grey[850]
                         : Colors.white)!,
-                    widget.model.themeData.colorScheme.brightness != null &&
-                            widget.model.themeData.colorScheme.brightness ==
+                    widget.model.themeData.colorScheme.brightness ==
                                 Brightness.dark
                         ? Colors.white
                         : Colors.black87)

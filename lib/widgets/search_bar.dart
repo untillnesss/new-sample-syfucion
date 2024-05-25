@@ -1,4 +1,5 @@
 ///Dart import
+library;
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -193,7 +194,7 @@ class SearchBarState extends State<CustomSearchBar>
       final List<SubItem> dummySampleData = <SubItem>[];
       for (int i = 0; i < dummySearchSamplesList.length; i++) {
         final SubItem item = dummySearchSamplesList[i];
-        if ((item.control!.title! + ' - ' + item.title!)
+        if (('${item.control!.title!} - ${item.title!}')
             .toLowerCase()
             .contains(query.toLowerCase())) {
           dummySampleData.add(item);
@@ -222,12 +223,10 @@ class SearchBarState extends State<CustomSearchBar>
 
   /// Method to remove the overlay entries
   void _removeOverlayEntries() {
-    if (overlayEntries != null && overlayEntries.isNotEmpty) {
+    if (overlayEntries.isNotEmpty) {
       for (final OverlayEntry overlayEntry in overlayEntries) {
-        if (overlayEntry != null) {
-          overlayEntry.remove();
-        }
-      }
+        overlayEntry.remove();
+            }
     }
     overlayEntries.clear();
   }
@@ -322,8 +321,7 @@ class SearchBarState extends State<CustomSearchBar>
     _keys.forEach((dynamic index, dynamic key) {
       final Rect itemRect = _RectGetterFromListView.getRectFromKey(
           key.currentContext == null ? _globalKey : key)!;
-      if (itemRect != null &&
-          (itemRect.top >= rect.top && itemRect.bottom <= rect.bottom + 2)) {
+      if ((itemRect.top >= rect.top && itemRect.bottom <= rect.bottom + 2)) {
         items.add(index);
       }
     });
@@ -425,11 +423,10 @@ class SearchBarState extends State<CustomSearchBar>
                                                           'Roboto-Bold'),
                                                 ),
                                                 TextSpan(
-                                                  text: ' - ' +
-                                                      widget
+                                                  text: ' - ${widget
                                                           .sampleListModel
                                                           .searchResults[index]
-                                                          .title!,
+                                                          .title!}',
                                                   style: TextStyle(
                                                       fontSize: 13,
                                                       color: widget
@@ -584,7 +581,7 @@ class _RectGetterFromListView extends StatefulWidget {
     final dynamic translation = object.getTransformTo(null).getTranslation();
     final Size size = object.semanticBounds.size;
 
-    if (translation != null && size != null) {
+    if (translation != null) {
       return Rect.fromLTWH(
           translation.x, translation.y, size.width, size.height);
     } else {

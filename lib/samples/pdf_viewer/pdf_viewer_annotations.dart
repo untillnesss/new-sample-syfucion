@@ -56,7 +56,6 @@ class _AnnotationsPdfViewerState extends SampleViewState {
     super.initState();
     _documentPath = 'assets/pdf/annotations.pdf';
     _isDesktopWeb = isDesktop &&
-        model.isMobileResolution != null &&
         !model.isMobileResolution;
     if (_isDesktopWeb) {
       helper.preventDefaultContextMenu();
@@ -80,7 +79,6 @@ class _AnnotationsPdfViewerState extends SampleViewState {
       _needToMaximize = model.needToMaximize;
     }
     _isDesktopWeb = isDesktop &&
-        model.isMobileResolution != null &&
         !model.isMobileResolution;
   }
 
@@ -358,30 +356,28 @@ class _AnnotationsPdfViewerState extends SampleViewState {
         offset: Offset(0, 3),
       ),
     ];
-    if (toolbarItemRenderBox != null) {
-      final Offset position =
-          positionOverride ?? toolbarItemRenderBox.localToGlobal(Offset.zero);
-      overlayState = Overlay.of(context, rootOverlay: true);
-      overlayEntry = OverlayEntry(
-        builder: (BuildContext context) => Positioned(
-          top: position.dy + 40.0,
-          left: position.dx,
-          child: Container(
-            decoration: BoxDecoration(
-              color:
-                  _isLight ? const Color(0xFFFFFFFF) : const Color(0xFF424242),
-              boxShadow: boxShadows,
-              borderRadius: _useMaterial3
-                  ? BorderRadius.all(Radius.circular(borderRadius ?? 4.0))
-                  : null,
-            ),
-            constraints: constraints,
-            child: dropDownItems,
+    final Offset position =
+        positionOverride ?? toolbarItemRenderBox.localToGlobal(Offset.zero);
+    overlayState = Overlay.of(context, rootOverlay: true);
+    overlayEntry = OverlayEntry(
+      builder: (BuildContext context) => Positioned(
+        top: position.dy + 40.0,
+        left: position.dx,
+        child: Container(
+          decoration: BoxDecoration(
+            color:
+                _isLight ? const Color(0xFFFFFFFF) : const Color(0xFF424242),
+            boxShadow: boxShadows,
+            borderRadius: _useMaterial3
+                ? BorderRadius.all(Radius.circular(borderRadius ?? 4.0))
+                : null,
           ),
+          constraints: constraints,
+          child: dropDownItems,
         ),
-      );
-    }
-    overlayState?.insert(overlayEntry!);
+      ),
+    );
+      overlayState.insert(overlayEntry);
     return overlayEntry;
   }
 
@@ -392,30 +388,28 @@ class _AnnotationsPdfViewerState extends SampleViewState {
     final RenderBox colorPaletteRenderBox = (_toolbarKey
         .currentState?._colorPaletteKey.currentContext
         ?.findRenderObject())! as RenderBox;
-    if (colorPaletteRenderBox != null) {
-      final Widget child = ColorPalette(
-        pdfViewerController: _pdfViewerController,
-        model: model,
-        selectedAnnotation: _selectedAnnotation,
-        selectedColor: _selectedColor,
-        selectedOpacity: _opacity,
-        onColorChanged: (Color color) {
-          _selectedColor = color;
-        },
-      );
-      final Offset position = colorPaletteRenderBox.localToGlobal(
-          Offset(-(_kColorPaletteWidth - colorPaletteRenderBox.size.width), 0));
-      _colorPaletteOverlayEntry = _showDropDownOverlay(
-        colorPaletteRenderBox,
-        _colorPaletteOverlayEntry,
-        BoxConstraints.tightFor(
-            width: _kColorPaletteWidth, height: _kColorPaletteHeight),
-        child,
-        position,
-        12,
-      );
+    final Widget child = ColorPalette(
+      pdfViewerController: _pdfViewerController,
+      model: model,
+      selectedAnnotation: _selectedAnnotation,
+      selectedColor: _selectedColor,
+      selectedOpacity: _opacity,
+      onColorChanged: (Color color) {
+        _selectedColor = color;
+      },
+    );
+    final Offset position = colorPaletteRenderBox.localToGlobal(
+        Offset(-(_kColorPaletteWidth - colorPaletteRenderBox.size.width), 0));
+    _colorPaletteOverlayEntry = _showDropDownOverlay(
+      colorPaletteRenderBox,
+      _colorPaletteOverlayEntry,
+      BoxConstraints.tightFor(
+          width: _kColorPaletteWidth, height: _kColorPaletteHeight),
+      child,
+      position,
+      12,
+    );
     }
-  }
 
   /// Close color palette overlay.
   void _handleColorPaletteOverlayClose() {
@@ -444,8 +438,8 @@ class AnnotationToolbar extends StatefulWidget {
     this.onTap,
     this.showTooltip = true,
     this.model,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Indicates whether tooltip for the toolbar items need to be shown or not.
   final bool showTooltip;

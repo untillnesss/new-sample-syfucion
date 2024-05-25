@@ -1,4 +1,5 @@
 /// Package import
+library;
 import 'package:flutter/material.dart';
 
 /// Chart import
@@ -62,10 +63,10 @@ class _PyramidLegendState extends SampleViewState {
         text = args.dataPoints![args.pointIndex!.toInt()].y.toString();
         if (text.contains('.')) {
           data = text.split('.');
-          final String newTe = data[0] + ' years ' + data[1] + ' months';
+          final String newTe = '${data[0]} years ${data[1]} months';
           args.text = newTe;
         } else {
-          args.text = text + ' years';
+          args.text = '$text years';
         }
       },
       //  smartLabelMode: SmartLabelMode.none,

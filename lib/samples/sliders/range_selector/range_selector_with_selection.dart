@@ -1,4 +1,5 @@
 ///Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -104,7 +105,7 @@ class _RangeSelectorSelectionPageState extends SampleViewState
       }
     }
     textController.text =
-        'Total data usage : ' + dataUsage.toStringAsFixed(1) + 'GB';
+        'Total data usage : ${dataUsage.toStringAsFixed(1)}GB';
   }
 
   @override

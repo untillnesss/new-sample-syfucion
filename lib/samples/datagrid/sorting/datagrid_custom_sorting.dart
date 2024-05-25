@@ -1,4 +1,5 @@
 /// Packages import
+library;
 import 'package:flutter/material.dart';
 
 /// DataGrid import
@@ -12,7 +13,7 @@ import '../datagridsource/product_datagridsource.dart';
 /// Renders custom sorting data grid sample
 class CustomSortingDataGrid extends SampleView {
   /// Creates custom sorting data grid sample
-  const CustomSortingDataGrid({Key? key}) : super(key: key);
+  const CustomSortingDataGrid({super.key});
 
   @override
   _CustomSortingDataGridState createState() => _CustomSortingDataGridState();

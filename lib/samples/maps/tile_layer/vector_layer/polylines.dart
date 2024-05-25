@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -170,7 +171,7 @@ class _PolylinesSampleState extends SampleViewState
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                    _routes[0].city + ' - ' + _routes[1].city,
+                                    '${_routes[0].city} - ${_routes[1].city}',
                                     style: model.themeData.textTheme.bodySmall!
                                         .copyWith(
                                             color: const Color.fromRGBO(

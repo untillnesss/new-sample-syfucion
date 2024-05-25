@@ -1,4 +1,5 @@
 ///Package imports
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ import 'datagridsource/orderinfo_datagridsource.dart';
 /// Render data pager
 class PagingDataGrid extends SampleView {
   /// Create data pager
-  const PagingDataGrid({Key? key}) : super(key: key);
+  const PagingDataGrid({super.key});
 
   @override
   _PagingDataGridState createState() => _PagingDataGridState();

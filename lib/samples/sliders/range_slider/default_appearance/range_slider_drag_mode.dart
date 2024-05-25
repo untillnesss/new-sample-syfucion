@@ -1,4 +1,5 @@
 /// Flutter package import
+library;
 import 'package:flutter/material.dart';
 
 /// Slider import

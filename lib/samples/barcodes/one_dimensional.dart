@@ -1,4 +1,5 @@
 /// Flutter package imports
+library;
 import 'package:flutter/material.dart';
 
 /// Barcode imports
@@ -10,7 +11,7 @@ import '../../model/sample_view.dart';
 /// Widget of the one dimensional barcodes.
 class OneDimensionalBarcodes extends SampleView {
   /// Creates one dimensional barcodes.
-  const OneDimensionalBarcodes({Key? key}) : super(key: key);
+  const OneDimensionalBarcodes({super.key});
   @override
   _OneDimensionalBarcodesState createState() => _OneDimensionalBarcodesState();
 }

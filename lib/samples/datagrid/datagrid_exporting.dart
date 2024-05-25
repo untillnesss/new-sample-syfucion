@@ -1,4 +1,5 @@
 ///Dart import
+library;
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:core';
@@ -23,7 +24,7 @@ import 'datagridsource/dealer_datagridsource.dart';
 /// Render data grid with editing.
 class ExportingDataGrid extends SampleView {
   /// Create data grid with editing.
-  const ExportingDataGrid({Key? key}) : super(key: key);
+  const ExportingDataGrid({super.key});
 
   @override
   _ExportingDataGridState createState() => _ExportingDataGridState();

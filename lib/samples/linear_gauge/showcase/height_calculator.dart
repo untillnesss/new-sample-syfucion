@@ -132,7 +132,7 @@ class _HeightCalculatorState extends SampleViewState {
                                 borderRadius: BorderRadius.circular(4)),
                             child: Center(
                               child: Text(
-                                  _pointerValue.toStringAsFixed(0) + ' cm',
+                                  '${_pointerValue.toStringAsFixed(0)} cm',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.normal,
                                       fontSize: 14,

@@ -1,4 +1,5 @@
 /// Package imports
+library;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'datagridsource/orderinfo_datagridsource.dart';
 /// Renders pull refresh data grid
 class PullToRefreshDataGrid extends SampleView {
   /// Creates pull refresh data grid
-  const PullToRefreshDataGrid({Key? key}) : super(key: key);
+  const PullToRefreshDataGrid({super.key});
 
   @override
   _PullToRefreshDataGridState createState() => _PullToRefreshDataGridState();

@@ -1,4 +1,5 @@
 /// Dart import
+library;
 import 'dart:math';
 
 ///Package import
@@ -69,8 +70,7 @@ class _CustomizedDatePickerState extends SampleViewState {
           child: _getCustomizedDatePicker(_specialDates, model.themeData)),
     );
     return Scaffold(
-      backgroundColor: model.themeData == null ||
-              model.themeData.colorScheme.brightness == Brightness.light
+      backgroundColor: model.themeData.colorScheme.brightness == Brightness.light
           ? null
           : const Color(0x00171a21),
       body: Column(children: <Widget>[
@@ -97,9 +97,7 @@ class _CustomizedDatePickerState extends SampleViewState {
   /// Returns the date range picker based on the properties passed
   SfDateRangePicker _getCustomizedDatePicker(
       List<DateTime> specialDates, ThemeData theme) {
-    final bool isDark = theme != null &&
-        theme.brightness != null &&
-        theme.brightness == Brightness.dark;
+    final bool isDark = theme.brightness == Brightness.dark;
 
     final Color monthCellBackground =
         isDark ? const Color(0xFF232731) : const Color(0xfff7f4ff);
